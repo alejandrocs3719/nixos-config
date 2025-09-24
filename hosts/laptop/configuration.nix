@@ -68,7 +68,7 @@
         CPU_MAX_PERF_ON_BAT = 20;
 
        #Optional helps save long term battery health
-       START_CHARGE_THRESH_BAT0 = 40; # 40 and below it starts to charge
+	    #START_CHARGE_THRESH_BAT0 = 40; # 40 and below it starts to charge
        STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
 
       };
@@ -127,13 +127,6 @@
   programs.firefox.enable = true;
   steam.enable = true; 
 
-  # programs.steam = {
-  #   enable = true;
-  #   extraCompatPackages = [ pkgs.proton-ge-bin ];
-  #   extraPackages = [ pkgs.gamescope ];
-  #   extest.enable = true;
-  # };
-  # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
