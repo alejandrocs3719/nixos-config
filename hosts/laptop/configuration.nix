@@ -125,14 +125,14 @@
   };
 
   programs.firefox.enable = true;
-  
+  steam.enable = true; 
 
-    programs.steam = {
-      enable = true;
-      extraCompatPackages = [ pkgs.proton-ge-bin ];
-      extraPackages = [ pkgs.gamescope ];
-      extest.enable = true;
-    };
+  # programs.steam = {
+  #   enable = true;
+  #   extraCompatPackages = [ pkgs.proton-ge-bin ];
+  #   extraPackages = [ pkgs.gamescope ];
+  #   extest.enable = true;
+  # };
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [

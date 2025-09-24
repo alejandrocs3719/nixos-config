@@ -12,13 +12,14 @@
         nixosConfigurations.nixandrete = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             modules = [
-                ./configuration.nix
+                ./hosts/laptop/configuration.nix
+		./nixos-modules
                 home-manager.nixosModules.home-manager
                 {
                     home-manager = {
                         useGlobalPkgs = true;
                         useUserPackages = true;
-                        users.alejandro = import ./home.nix;
+                        users.alejandro = import ./hosts/laptop/home.nix;
                         backupFileExtension = "backup"; # If config file I downloaded already exist, it will be moved to backup directory
                     };
                 
