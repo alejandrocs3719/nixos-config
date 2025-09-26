@@ -9,6 +9,7 @@
     [ 
       ./hardware-configuration.nix
     ];
+  battery.low-power.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -53,49 +54,49 @@
 
   # Power management
 
-  services.tlp = {
-      enable = true;
-      settings = {
-        CPU_SCALING_GOVERNOR_ON_AC = "performance";
-        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+# services.tlp = {
+#     enable = true;
+#     settings = {
+#       CPU_SCALING_GOVERNOR_ON_AC = "performance";
+#       CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
-        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+#       CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+#       CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
 
-        CPU_MIN_PERF_ON_AC = 0;
-        CPU_MAX_PERF_ON_AC = 100;
-        CPU_MIN_PERF_ON_BAT = 0;
-        CPU_MAX_PERF_ON_BAT = 20;
+#       CPU_MIN_PERF_ON_AC = 0;
+#       CPU_MAX_PERF_ON_AC = 100;
+#       CPU_MIN_PERF_ON_BAT = 0;
+#       CPU_MAX_PERF_ON_BAT = 20;
 
-       #Optional helps save long term battery health
-	    #START_CHARGE_THRESH_BAT0 = 40; # 40 and below it starts to charge
-       STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
+#      #Optional helps save long term battery health
+#           #START_CHARGE_THRESH_BAT0 = 40; # 40 and below it starts to charge
+#      STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
 
-      };
-}; 
+#     };
+# }; 
   # Richard Stallman is crying:
     nixpkgs.config.allowUnfree = true;
-  # Nvidia Drivers with prime offloading:
-    hardware.graphics.enable = true;
-    services.xserver.videoDrivers = [
-      "modesetting" 
-      "nvidia"
-    ];  
-    hardware.nvidia.open = true; 
-    hardware.nvidia.modesetting.enable = true;
-    hardware.nvidia.prime = {
-      offload = {
-        enable = true;
-	enableOffloadCmd = true;
-      };
-    
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
-    hardware.nvidia.powerManagement = {
-      enable = true;
-      finegrained = true;
-    };
+# # Nvidia Drivers with prime offloading:
+#   hardware.graphics.enable = true;
+#   services.xserver.videoDrivers = [
+#     "modesetting" 
+#     "nvidia"
+#   ];  
+#   hardware.nvidia.open = true; 
+#   hardware.nvidia.modesetting.enable = true;
+#   hardware.nvidia.prime = {
+#     offload = {
+#       enable = true;
+#       enableOffloadCmd = true;
+#     };
+#   
+#     intelBusId = "PCI:0:2:0";
+#     nvidiaBusId = "PCI:1:0:0";
+#   };
+#   hardware.nvidia.powerManagement = {
+#     enable = true;
+#     finegrained = true;
+#   };
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -139,6 +140,7 @@
     swww
     hyprsunset
     prismlauncher
+    powertop
   ];
 
   fonts.packages = with pkgs; [
