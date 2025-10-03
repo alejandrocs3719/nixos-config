@@ -10,7 +10,8 @@
       ./hardware-configuration.nix
     ];
   battery.low-power.enable = true;
-
+  asus.enable = true;
+  desktop.hyprland.enable = true;
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -45,14 +46,7 @@
      autoRepeatDelay = 200;
      autoRepeatInterval = 35; # Key repeat rate, useful for navigating vim
   };
-  programs.hyprland = {
-     enable = true;
-     xwayland.enable = true;
-  };
-  services.displayManager.ly.enable = true;
-  programs.waybar.enable = true;
-
-  # Power management
+    # Power management
 
 # services.tlp = {
 #     enable = true;
@@ -126,6 +120,7 @@
   };
 
   programs.firefox.enable = true;
+  programs.nm-applet.enable = true;
   steam.enable = true; 
 
   # You can use https://search.nixos.org/ to find more packages (and options).
@@ -141,6 +136,7 @@
     hyprsunset
     prismlauncher
     powertop
+    networkmanagerapplet
   ];
 
   fonts.packages = with pkgs; [

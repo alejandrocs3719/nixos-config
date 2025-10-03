@@ -75,6 +75,11 @@
         SOUND_POWER_SAVE_ON_BAT = "1";
         PLATFORM_PROFILE_ON_AC = "balanced";
         PLATFORM_PROFILE_ON_BAT = "low-power";
+	
+	# Battery Care for asus laptops:
+	# Battery care para ASUS
+	START_CHARGE_THRESH_BAT1 = 0;   # dummy value, always 0
+	STOP_CHARGE_THRESH_BAT1 = 80;   # charges up to 80%
       };
     };
     powerManagement.powertop.enable = true;
