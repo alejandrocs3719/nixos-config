@@ -1,11 +1,11 @@
 { pkgs, lib, config, ... }: {
   
   options = {
-    graphics.nvidia.enable = libMkEnableOption "Enables Nvidia Graphics Module (and Intel Graphics too)";
+    graphics.nvidia.enable = lib.mkEnableOption "Enables Nvidia Graphics Module (and Intel Graphics too)";
 	
   };
 
-  config = lib.mkIf config.base.enable {
+  config = lib.mkIf config.graphics.nvidia.enable {
      
     # Richard Stallman is crying:
       nixpkgs.config.allowUnfree = true;

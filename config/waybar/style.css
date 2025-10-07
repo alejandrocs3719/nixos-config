@@ -1,15 +1,29 @@
-@define-color bg    #1a1b26;
-@define-color fg    #a9b1d6;
-@define-color blk   #32344a;
-@define-color red   #f7768e;
-@define-color grn   #9ece6a;
-@define-color ylw   #e0af68;
-@define-color blu   #7aa2f7;
-@define-color mag   #ad8ee6;
-@define-color cyn   #0db9d7;
-@define-color brblk #444b6a;
-@define-color wht   #ffffff;
 
+/*
+    @define-color bg    #1a1b26;
+    @define-color fg    #a9b1d6;
+    @define-color blk   #32344a;
+    @define-color red   #f7768e;
+    @define-color grn   #9ece6a;
+    @define-color ylw   #e0af68;
+    @define-color blu   #7aa2f7;
+    @define-color mag   #ad8ee6;
+    @define-color cyn   #0db9d7;
+    @define-color brblk #444b6a;
+    @define-color wht   #ffffff;
+*/
+
+@define-color bg    #0E0E0E;
+@define-color fg    #D3C6AA;
+@define-color blk   #232A2E;
+@define-color red   #E67E80;
+@define-color grn   #A7C080;
+@define-color ylw   #DBBC7F;
+@define-color blu   #7FBBB3;
+@define-color mag   #D699B6;
+@define-color cyn   #83C092;
+@define-color brblk #48555B;
+@define-color wht   #FFFBef;
 
 * {
     /* `otf-font-awesome` is required to be installed for icons */
@@ -104,14 +118,17 @@ button:hover {
 #idle_inhibitor,
 #scratchpad,
 #power-profiles-daemon,
+
 #tray {
     padding: 0 8px;
     color: @white;
 }
 
+
 #custom-sep {
     color: @brblk;
 }
+
 #custom-nixos-icon {
     color : @blu;
     font-size: 18px;
@@ -170,7 +187,6 @@ button:hover {
 }
 
 #wireplumber.muted {
-    background-color: #f53c3c;
 }
 
 #battery.charging, #battery.plugged {
@@ -260,7 +276,7 @@ label:focus {
 }
 
 #tray {
-    background-color: #2980b9;
+    /* background-color or smth */
 }
 
 #tray > .passive {
@@ -269,7 +285,6 @@ label:focus {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
 }
 
 #idle_inhibitor {

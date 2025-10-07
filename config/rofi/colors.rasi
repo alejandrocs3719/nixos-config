@@ -1,0 +1,45 @@
+/**
+ * Everforest Mod palette
+ */
+* {
+    base:      #0E0E0E;
+    mantle:    #232A2E;
+    crust:     #232A2E;
+
+    text:      #D3C6AA;
+    subtext0:  #A7C080;
+    subtext1:  #EDEADA;
+
+    surface0:  #48555B;
+    surface1:  #4F585E;
+    surface2:  #5D5C69;
+
+    overlay0:  #A7C080;
+    overlay1:  #7FBBB3;
+    overlay2:  #83C092;
+
+    blue:      #7FBBB3;
+    lavender:  #D699B6;
+    sapphire:  #83C092;
+    sky:       #DBBC7F;
+    teal:      #83C092;
+    green:     #A7C080;
+    yellow:    #DBBC7F;
+    peach:     #DD9C9D;
+    maroon:    #E67E80;
+    red:       #E67E80;
+    mauve:     #D699B6;
+    pink:      #DD9C9D;
+    flamingo:  #DBBC7F;
+    rosewater: #EDEADA;
+
+    transparent: #00000000;
+
+    background:     @base;
+    background-alt: @surface0;
+    background-opacity: rgba(14, 14, 14, 0.85);
+    foreground:     @text;
+    selected:       @blue;
+    active:         @magenta;
+    urgent:         @red;
+}

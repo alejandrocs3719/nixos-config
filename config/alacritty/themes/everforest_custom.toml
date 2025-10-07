@@ -1,0 +1,30 @@
+# Colors (Everforest Custom)
+
+[colors.primary]
+background = '#0E0E0E'
+foreground = '#D3C6AA'
+
+[colors.selection]
+text = '#D3C6AA'
+background = '#5D5C69'
+
+[colors.normal]
+black   = '#232A2E' # palette 0
+red     = '#E67E80' # palette 1
+green   = '#A7C080' # palette 2
+yellow  = '#DBBC7F' # palette 3
+blue    = '#7FBBB3' # palette 4
+magenta = '#D699B6' # palette 5
+cyan    = '#83C092' # palette 6
+white   = '#4F585E' # palette 7
+
+[colors.bright]
+black   = '#48555B' # palette 8
+red     = '#DD9C9D' # palette 9
+green   = '#425047' # palette 10
+yellow  = '#4D4C43' # palette 11
+blue    = '#3A515D' # palette 12
+magenta = '#514045' # palette 13
+cyan    = '#83C092' # palette 14
+white   = '#D3C6AA' # palette 15
+

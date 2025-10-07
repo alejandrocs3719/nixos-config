@@ -1,16 +1,3 @@
-configuration{
-    modi: ["drun", "window", "run"];
-    //icon-theme: "Papirus-Dark";
-    show-icons: true;
-    terminal: "Alacritty";
-    drun-display-format: "{icon} {name}";
-    disable-history: false;
-    sidebar-mode: false;
-    display-drun: " ";
-    display-run: " Search:";
-    display-window: " Windows:";
-}
-
 @import "./fonts.rasi"
 @import "./colors.rasi"
 
@@ -22,7 +9,7 @@ configuration{
 // defines different aspects of the window
 window {
     background-color: @background-opacity;
-    width: 300;
+    width: 500;
     orientation: horizontal;
     location: center;
     anchor: center;
@@ -86,7 +73,7 @@ element {
 }
 
 element-icon {
-    enabled: true;
+    enabled: false;
     font: @font;
 }
 
@@ -100,30 +87,8 @@ element normal active {
     text-color: @green;
 }
 
-element normal,
-element alternate.normal,
-element selected.normal,
-element alternate.selected.normal {
-    background-color: transparent;
-    border: 0;
-}
-
-
 element-text, element-icon {
     size: 25px;
     background-color: transparent;
     text-color: inherit;
-}
-
-/* Ignores base theme */
-* {
-    alternate-normal-background: transparent;
-    alternate-active-background: transparent;
-    alternate-urgent-background: transparent;
-    selected-normal-background: transparent;
-    selected-active-background: transparent;
-    selected-urgent-background: transparent;
-    normal-background: transparent;
-    urgent-background: transparent;
-    active-background: transparent;
 }
