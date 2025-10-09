@@ -9,15 +9,18 @@
     [ 
       ./hardware-configuration.nix
     ];
-  battery.low-power.enable = true;
+  battery.low-power.enable = false;
   asus.enable = true;
-  desktop.hyprland.enable = true;
+  desktop.plasma.enable = true;
+  desktop.stylix.enable = false;
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelParams = [ "i915.enable_dpcd_backlight=1" ];
+
 
   networking.hostName = "nixandrete"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -32,7 +35,19 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "es_ES.UTF-8";
+  # i18n.defaultLocale = "es_ES.UTF-8";
+
+    i18n = {
+      defaultLocale = "en_US.UTF-8";  # main system language
+      extraLocaleSettings = {
+	LC_TIME = "es_ES.UTF-8";      # spanish date
+	LC_MONETARY = "es_ES.UTF-8";  
+	LC_NUMERIC = "es_ES.UTF-8";   
+	LC_PAPER = "es_ES.UTF-8"; 
+	LC_MEASUREMENT = "es_ES.UTF-8"; 
+	};
+    };
+
   console = {
     font = "Lat2-Terminus16";
     keyMap = "es";
@@ -128,16 +143,20 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
-    alacritty
-    rofi
     btop
     lua-language-server
-    swww
-    hyprsunset
+    nil
     prismlauncher
     powertop
+    vesktop
+    vmware-workstation
+    brave
     networkmanagerapplet
   ];
+
+  programs.chromium.enable = true;
+
+  virtualisation.vmware.host.enable = true;
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono

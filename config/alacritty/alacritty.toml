@@ -8,5 +8,5 @@ size = 12
 [general]
 import = [ "~/.nixos-config/config/alacritty/themes/everforest_custom.toml" ]
 
-[window]
-opacity = 0.2
+# [window]
+# opacity = 0.5

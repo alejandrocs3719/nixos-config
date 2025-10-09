@@ -11,14 +11,19 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
-
   outputs =
     {
       self,
       nixpkgs,
       home-manager,
       stylix,
+      plasma-manager,
       ...
     }@inputs:
     {
@@ -28,13 +33,20 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./hosts/laptop/configuration.nix
+	    stylix.nixosModules.stylix
             ./modules/nixos
             home-manager.nixosModules.home-manager
             {
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.alejandro = import ./hosts/laptop/home.nix;
+		sharedModules = [ plasma-manager.homeModules.plasma-manager ];
+                users.alejandro = {
+	          imports = [
+		    ./hosts/laptop/home.nix
+		    ./modules/home-manager
+		  ];
+		}; 
                 backupFileExtension = "backup"; # If config file I downloaded already exist, it will be moved to backup directory
               };
 
@@ -53,8 +65,14 @@
             {
               home-manager = {
                 useGlobalPkgs = true;
-                useUserPackages = true;
-                users.alejandro = import ./hosts/pc/home.nix;
+		useUserPackages = true;
+		sharedModules = [ plasma-manager.homeModules.plasma-manager ];
+		users.alejandro = {
+	          imports = [
+		    ./hosts/pc/home.nix
+		    ./modules/home-manager
+		  ];
+		};    
                 backupFileExtension = "backup"; # If config file I downloaded already exist, it will be moved to backup directory
               };
 

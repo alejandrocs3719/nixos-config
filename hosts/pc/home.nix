@@ -77,9 +77,4 @@ in
   #   Xft.dpi:       120
   # '';
 
-    stylix.cursor = {
-      package = pkgs.mcmojave-cursors;
-      name = "McMojave-cursors";
-      size = 24; # It is scaled with the window
-    };
 }

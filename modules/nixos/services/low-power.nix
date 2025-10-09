@@ -62,7 +62,7 @@
         PCIE_ASPM_ON_BAT = "powersupersave";
         RUNTIME_PM_ON_AC = "auto";
         RUNTIME_PM_ON_BAT = "auto";
-        USB_AUTOSUSPEND = "1";
+        USB_AUTOSUSPEND = "0"; # if set to 1 mouse and keyboard work incorrectly
         WIFI_PWR_ON_AC = "on";
         WIFI_PWR_ON_BAT = "on";
         DEVICES_TO_DISABLE_ON_BAT = "bluetooth";

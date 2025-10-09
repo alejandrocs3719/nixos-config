@@ -8,6 +8,7 @@
     ./services/amdgpu.nix
     ./desktop/stylix.nix
     ./services/bluetooth.nix
+    ./desktop/kde.nix
   ];
 
 }

@@ -38,6 +38,7 @@ in {
       hyprshot # Screenshot utility
       mcmojave-cursors # from my overlay
       bluetuith
+      nautilus
     ];
 
     programs.waybar.enable = true;
