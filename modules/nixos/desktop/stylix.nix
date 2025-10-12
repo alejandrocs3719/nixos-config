@@ -18,7 +18,7 @@
 	base01 = "#232A2E"; # neutral dark (edited, palette 0)
 	base02 = "#48555B"; # neutral (edited, palette 8)
 	base03 = "#4F585E"; # neutral (edited, palette 7)
-	base04 = "#5D5C69"; # selection background (Ghostty)
+	base04 = "#5D5C69"; # selection background 
 	base05 = "#D3C6AA"; # foreground (same as Everforest)
 	base06 = "#EDEADA"; # inherited from Everforest (light)
 	base07 = "#FFFBef"; # inherited from Everforest (lightest)

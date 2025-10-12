@@ -26,6 +26,7 @@ in
     };
   
 
+    home.plasma.enable = true;
 
     # Loop to prevent code duplication
     xdg.configFile = builtins.mapAttrs (name: subpath: {

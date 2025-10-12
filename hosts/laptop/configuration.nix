@@ -135,7 +135,7 @@
   };
 
   programs.firefox.enable = true;
-  programs.nm-applet.enable = true;
+  programs.nm-applet.enable = false;
   steam.enable = true; 
 
   # You can use https://search.nixos.org/ to find more packages (and options).
@@ -151,7 +151,7 @@
     vesktop
     vmware-workstation
     brave
-    networkmanagerapplet
+    # networkmanagerapplet
   ];
 
   programs.chromium.enable = true;
