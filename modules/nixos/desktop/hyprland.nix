@@ -32,12 +32,15 @@ in {
       inputs.mcmojave-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default # McMojave Hyprcursor theme
       hyprpolkitagent # Needed for gui apps to request admin privilege
       brightnessctl
+      swayosd # OSD for volume or brightness changing
       nwg-look
       qt6ct
       libsForQt5.qt5ct
       hyprshot # Screenshot utility
       mcmojave-cursors # from my overlay
       bluetuith
+      blueberry
+      impala
       nautilus
     ];
 
@@ -47,6 +50,7 @@ in {
     services.hypridle.enable = true;
 
     services.blueman.enable = true;
+
 
     systemd.user.services.hypr-refresh = {
       enable = true;

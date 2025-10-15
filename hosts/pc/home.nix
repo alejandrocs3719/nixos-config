@@ -60,14 +60,6 @@ in
         fastfetch
     ];
     
-    # Night mode
-    services.wlsunset = {
-	enable = true;
-	latitude = 40.4165; 
-	longitude = -3.70256;
-	temperature.night = 1000;
-    };
-
 
   # xresources.extraConfig = ''
   #   Xft.antialias: true

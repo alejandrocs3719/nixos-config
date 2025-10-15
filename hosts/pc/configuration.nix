@@ -9,9 +9,9 @@
     [ 
       ./hardware-configuration.nix
     ];
-  desktop.hyprland.enable = true;
+  desktop.plasma.enable = true;
   graphics.amd.enable = true;
-  desktop.stylix.enable = true;
+  desktop.stylix.enable = false;
   bluetooth.enable = true;
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
