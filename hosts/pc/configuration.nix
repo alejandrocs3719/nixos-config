@@ -9,9 +9,9 @@
     [ 
       ./hardware-configuration.nix
     ];
-  desktop.plasma.enable = true;
+  desktop.hyprland.enable = true;
   graphics.amd.enable = true;
-  desktop.stylix.enable = false;
+  desktop.stylix.enable = true;
   bluetooth.enable = true;
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -95,7 +95,6 @@
     prismlauncher
     powertop
     vesktop
-    kdePackages.dolphin
     bottles
     vmware-workstation
     brave
