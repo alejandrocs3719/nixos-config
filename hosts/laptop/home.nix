@@ -4,11 +4,11 @@ let
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
   
   configs = {
-    hypr = "hypr";
+   # hypr = "hypr";
     nvim = "nvim";
     alacritty = "alacritty";
-    rofi = "rofi";
-    waybar = "waybar";
+   # rofi = "rofi";
+   # waybar = "waybar";
 
   };
 
@@ -59,14 +59,6 @@ in
 	gcc
         fastfetch
     ];
-    
-    # Night mode
-    services.wlsunset = {
-	enable = true;
-	latitude = 40.4165; 
-	longitude = -3.70256;
-	temperature.night = 1000;
-    };
                
 }
 

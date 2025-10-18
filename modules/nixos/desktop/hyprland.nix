@@ -19,10 +19,7 @@ in {
       enable = true;
     };
 
-    nixpkgs.overlays = [
-      (import ../../../overlays/mcmojave-cursors.nix)
-    ];
-
+    
     environment.systemPackages = with pkgs; [
       alacritty
       rofi # App launcher and custom menus

@@ -11,6 +11,11 @@
   };
 
   config = lib.mkIf config.home.stylix.enable {
+
+    nixpkgs.overlays = [
+      (import ../../../overlays/mcmojave-cursors.nix)
+    ];
+
     stylix = {
       cursor = {
         package = pkgs.mcmojave-cursors;

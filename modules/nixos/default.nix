@@ -9,6 +9,7 @@
     ./desktop/stylix.nix
     ./services/bluetooth.nix
     ./desktop/kde.nix
+    ./services/nvidia.nix
   ];
 
 }

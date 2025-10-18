@@ -10,6 +10,8 @@
 	  enable = true;
 	  enableUserService = true;
 	};
+	supergfxd.enable = false; # they told me on the asus linux discord this was no longer needed.  
     };
+
   };
 }

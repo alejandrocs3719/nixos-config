@@ -11,14 +11,17 @@
     ];
   battery.low-power.enable = false;
   asus.enable = true;
-  desktop.hyprland.enable = true;
-  desktop.stylix.enable = true;
+  desktop.plasma.enable = true;
+  graphics.nvidia.enable = true;
+##
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # Boot kernel parameter
   boot.kernelParams = [ "i915.enable_dpcd_backlight=1" ];
 
 
@@ -135,7 +138,6 @@
   };
 
   programs.firefox.enable = true;
-  programs.nm-applet.enable = false;
   steam.enable = true; 
 
   # You can use https://search.nixos.org/ to find more packages (and options).
@@ -149,14 +151,14 @@
     prismlauncher
     powertop
     vesktop
-    vmware-workstation
-    brave
-    # networkmanagerapplet
+    jdk
+  #  vmware-workstation
+  # brave
   ];
 
   programs.chromium.enable = true;
 
-  virtualisation.vmware.host.enable = true;
+  #virtualisation.vmware.host.enable = true;
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
