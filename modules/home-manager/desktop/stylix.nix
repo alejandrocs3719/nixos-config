@@ -17,16 +17,45 @@
     ];
 
     stylix = {
-      cursor = {
-        package = pkgs.mcmojave-cursors;
-        name = "McMojave-cursors";
-        size = 32; # It is scaled with the window
-      };
+     cursor = {
+       package = pkgs.mcmojave-cursors;
+       name = "McMojave-cursors";
+       size = 32; # It is scaled with the window
+     };
+
       icons = {
         enable = true;
         package = pkgs.papirus-icon-theme;
         dark = "Papirus-Dark";
         light = "Papirus-Light";
+      };
+
+      fonts = {
+        serif = {
+          package = pkgs.dejavu_fonts;
+          name = "DejaVu Serif";
+        };
+
+        sansSerif = {
+          package = pkgs.dejavu_fonts;
+          name = "DejaVu Sans";
+        };
+
+        monospace = {
+          package = pkgs.nerd-fonts.jetbrains-mono;
+          name = "JetBrainsMono Nerd Font";
+        };
+
+        emoji = {
+          package = pkgs.noto-fonts-color-emoji;
+          name = "Noto Color Emoji";
+        };
+      };
+      
+
+      opacity = {
+	desktop = 0.7;
+	terminal = 0.5;
       };
     };
 

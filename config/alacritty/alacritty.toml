@@ -1,12 +1,1 @@
-
-
-
-[font]
-normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
-size = 12
-
-[general]
-import = [ "~/.nixos-config/config/alacritty/themes/everforest_custom.toml" ]
-
-# [window]
-# opacity = 0.5
+/nix/store/zf7dmwg1qrxx2j05lz9dlk0wzj90aaqb-home-manager-files/.config/alacritty/alacritty.toml

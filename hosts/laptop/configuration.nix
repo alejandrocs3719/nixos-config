@@ -8,10 +8,14 @@
   imports =
     [ 
       ./hardware-configuration.nix
+      # ../../modules/nixos/services/disable-nvidia.nix
     ];
-  battery.low-power.enable = false;
+  # desktop.plasma.enable=true;
+  # battery.tuned.enable = true;
+  battery.power-profiles-daemon.enable = true;
   asus.enable = true;
-  desktop.plasma.enable = true;
+  desktop.stylix.enable = true;
+  desktop.hyprland.enable = true;
   graphics.nvidia.enable = true;
 ##
   # Use the systemd-boot EFI boot loader.
@@ -19,10 +23,27 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+     boot.kernelPackages = pkgs.linuxPackages_latest;
+    # boot.kernelPackages = pkgs.linuxPackages_zen;
+
 
   # Boot kernel parameter
-  boot.kernelParams = [ "i915.enable_dpcd_backlight=1" ];
+  boot.kernelParams = [ 
+    "i915.enable_dpcd_backlight=1" 
+    "acpi_backlight=native"
+    "nvidia.NVreg_EnableBacklightHandler=0"
+    "nvidia.NVreg_RegistryDwords=EnableBrightnessControl=0"
+  ];
+
+# # Fstab equivalent
+# fileSystems."/mnt/SSD" = {
+#  device = "/dev/disk/by-uuid/7428BB9E28BB5DB4";
+#  fsType = "ntfs";
+#  options = [ 
+#    "users" # Allows any user to mount and unmount
+#    "nofail" # Prevent system from failing if this drive doesn't mount
+#  ];
+#};
 
 
   networking.hostName = "nixandrete"; # Define your hostname.
@@ -88,38 +109,22 @@
 # }; 
   # Richard Stallman is crying:
     nixpkgs.config.allowUnfree = true;
-# # Nvidia Drivers with prime offloading:
-#   hardware.graphics.enable = true;
-#   services.xserver.videoDrivers = [
-#     "modesetting" 
-#     "nvidia"
-#   ];  
-#   hardware.nvidia.open = true; 
-#   hardware.nvidia.modesetting.enable = true;
-#   hardware.nvidia.prime = {
-#     offload = {
-#       enable = true;
-#       enableOffloadCmd = true;
-#     };
-#   
-#     intelBusId = "PCI:0:2:0";
-#     nvidiaBusId = "PCI:1:0:0";
-#   };
-#   hardware.nvidia.powerManagement = {
-#     enable = true;
-#     finegrained = true;
-#   };
+  
 
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
 
-  # Enable sound.
-  # services.pulseaudio.enable = true;
-  # OR
+
+
+
+
+
+
+
+  services.upower = {
+    enable = true;
+  };
+
+
   services.pipewire = {
     enable = true;
 	# pulse.enable = true;
@@ -152,6 +157,10 @@
     powertop
     vesktop
     jdk
+    lsof
+    nvme-cli
+    gparted
+    hyprpolkitagent
   #  vmware-workstation
   # brave
   ];

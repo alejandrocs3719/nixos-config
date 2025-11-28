@@ -6,9 +6,9 @@ let
   configs = {
    # hypr = "hypr";
     nvim = "nvim";
-    alacritty = "alacritty";
+    # alacritty = "alacritty";
    # rofi = "rofi";
-   # waybar = "waybar";
+	#   waybar = "waybar";
 
   };
 
@@ -58,7 +58,19 @@ in
 	nodejs
 	gcc
         fastfetch
+	impala # TUI connections manager
     ];
                
+  home.stylix.enable = true;
+  home.rofi.enable = true;
+  # home.wl-sunset.enable = true;
+  desktop.hyprland.enable = true;
+  # home.swayosd.enable = false;
+  home.yazi.enable = true;
+  home.libreoffice.enable = false;
+  home.onlyoffice.enable = false;
+  home.swaync.enable = true;
+  home.waybar.enable = true;
+  home.alacritty.enable = true;
 }
 

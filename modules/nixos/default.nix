@@ -9,7 +9,10 @@
     ./desktop/stylix.nix
     ./services/bluetooth.nix
     ./desktop/kde.nix
-    ./services/nvidia.nix
+    ./services/nvidia
+    ./services/tuned.nix
+    ./services/power-profiles-daemon.nix
+    ./services/intel-graphics.nix
   ];
 
 }

@@ -6,7 +6,8 @@
       # Monitores
       monitor = [
         "desc:Microstep MAG321UX OLED,3840x2160@240,1080x400,1.6,bitdepth,10,cm,hdr,sdrbrightness,1.2,sdrsaturation,0.98"
-	"desc:BNQ BenQ RL2455 56E05187SL0,1920x1080@60,0x0,1,transform,1"
+        #"desc:BNQ BenQ RL2455 56E05187SL0,1920x1080@60,0x0,1,transform,1"
+        "desc:Samsung Display Corp. ATNA60DL01-0,2560x1600@240,0x0,1.25,bitdepth,10,cm,hdr,sdrbrightness,1.2,sdrsaturation,0.98"
       ];
 
       # XWayland
@@ -23,17 +24,16 @@
         "waybar"
         "swww-daemon"
         "hypridle"
-	"swaync"
+        "swaync"
       ];
-    
-      
+
       # Appeareance
       general = {
         gaps_in = 5;
         gaps_out = 10;
         border_size = 2;
-    	# "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-	# "col.inactive_border" = "rgba(595959aa)";
+        # "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+        # "col.inactive_border" = "rgba(595959aa)";
         resize_on_border = false;
         allow_tearing = false;
         layout = "dwindle";
@@ -46,14 +46,14 @@
         inactive_opacity = 1.0;
 
         shadow = {
-          enabled = true;
+          enabled = false; # Battery Savings
           range = 4;
           render_power = 3;
           #color = "rgba(1a1a1aee)";
         };
 
         blur = {
-          enabled = true;
+          enabled = false; # false -> battery savings
           size = 5;
           passes = 5;
           brightness = 0.5;
@@ -63,7 +63,8 @@
       };
 
       animations = {
-        enabled = "yes, please :)";
+        enabled = "no";
+        # enabled = "yes, please :)";
         bezier = [
           "easeOutQuint,0.23,1,0.32,1"
           "easeInOutCubic,0.65,0.05,0.36,1"
@@ -115,6 +116,7 @@
       misc = {
         force_default_wallpaper = 0;
         disable_hyprland_logo = true;
+        vfr = true; # Battery Savings
       };
 
       input = {
@@ -123,7 +125,7 @@
         sensitivity = 0;
         repeat_rate = 35;
         repeat_delay = 200;
-	accel_profile = "flat";
+        accel_profile = "flat";
 
         touchpad = {
           natural_scroll = true;
@@ -148,7 +150,7 @@
         "$mainMod, V, togglefloating,"
         "Alt, Space, exec, $menu"
         "$mainMod, R, exec, $reload_waybar"
-	"$mainMod, K, exec, $hide_waybar"
+        "$mainMod, K, exec, $hide_waybar"
         "$mainMod, P, pseudo,"
         "$mainMod, J, togglesplit,"
         "$mainMod SHIFT, S, exec, hyprshot -m region --clipboard-only"
@@ -158,26 +160,26 @@
         "$mainMod, right, movefocus, r"
         "$mainMod, up, movefocus, u"
         "$mainMod, down, movefocus, d"
-#       "$mainMod, 1, workspace, 1"
-#       "$mainMod, 2, workspace, 2"
-#       "$mainMod, 3, workspace, 3"
-#       "$mainMod, 4, workspace, 4"
-#       "$mainMod, 5, workspace, 5"
-#       "$mainMod, 6, workspace, 6"
-#       "$mainMod, 7, workspace, 7"
-#       "$mainMod, 8, workspace, 8"
-#       "$mainMod, 9, workspace, 9"
-#       "$mainMod, 0, workspace, 10"
-#       "$mainMod SHIFT, 1, movetoworkspace, 1"
-#       "$mainMod SHIFT, 2, movetoworkspace, 2"
-#       "$mainMod SHIFT, 3, movetoworkspace, 3"
-#       "$mainMod SHIFT, 4, movetoworkspace, 4"
-#       "$mainMod SHIFT, 5, movetoworkspace, 5"
-#       "$mainMod SHIFT, 6, movetoworkspace, 6"
-#       "$mainMod SHIFT, 7, movetoworkspace, 7"
-#       "$mainMod SHIFT, 8, movetoworkspace, 8"
-#       "$mainMod SHIFT, 9, movetoworkspace, 9"
-#       "$mainMod SHIFT, 0, movetoworkspace, 10"
+        #       "$mainMod, 1, workspace, 1"
+        #       "$mainMod, 2, workspace, 2"
+        #       "$mainMod, 3, workspace, 3"
+        #       "$mainMod, 4, workspace, 4"
+        #       "$mainMod, 5, workspace, 5"
+        #       "$mainMod, 6, workspace, 6"
+        #       "$mainMod, 7, workspace, 7"
+        #       "$mainMod, 8, workspace, 8"
+        #       "$mainMod, 9, workspace, 9"
+        #       "$mainMod, 0, workspace, 10"
+        #       "$mainMod SHIFT, 1, movetoworkspace, 1"
+        #       "$mainMod SHIFT, 2, movetoworkspace, 2"
+        #       "$mainMod SHIFT, 3, movetoworkspace, 3"
+        #       "$mainMod SHIFT, 4, movetoworkspace, 4"
+        #       "$mainMod SHIFT, 5, movetoworkspace, 5"
+        #       "$mainMod SHIFT, 6, movetoworkspace, 6"
+        #       "$mainMod SHIFT, 7, movetoworkspace, 7"
+        #       "$mainMod SHIFT, 8, movetoworkspace, 8"
+        #       "$mainMod SHIFT, 9, movetoworkspace, 9"
+        #       "$mainMod SHIFT, 0, movetoworkspace, 10"
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
       ];

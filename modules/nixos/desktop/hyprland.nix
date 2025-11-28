@@ -1,9 +1,18 @@
-{ pkgs, lib, config, inputs, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
+}:
 
 let
-  hypr-refresh = pkgs.writeShellScriptBin "hypr-refresh" (builtins.readFile ../../../scripts/hypr-refresh.sh);
+  hypr-refresh = pkgs.writeShellScriptBin "hypr-refresh" (
+    builtins.readFile ../../../scripts/hypr-refresh.sh
+  );
 
-in {
+in
+{
   options = {
     desktop.hyprland.enable = lib.mkEnableOption "Enables hyprland compositor module";
   };
@@ -19,7 +28,22 @@ in {
       enable = true;
     };
 
-    
+    services.udev.extraRules = ''
+      # Intel iGPU
+      KERNEL=="card*", \
+        KERNELS=="0000:00:02.0", \
+        SUBSYSTEM=="drm", \
+        SUBSYSTEMS=="pci", \
+        SYMLINK+="dri/intel-igpu"
+
+      # NVIDIA dGPU
+      KERNEL=="card*", \
+        KERNELS=="0000:01:00.0", \
+        SUBSYSTEM=="drm", \
+        SUBSYSTEMS=="pci", \
+        SYMLINK+="dri/nvidia-dgpu"
+    '';
+
     environment.systemPackages = with pkgs; [
       alacritty
       rofi # App launcher and custom menus
@@ -31,10 +55,9 @@ in {
       brightnessctl
       swayosd # OSD for volume or brightness changing
       nwg-look
-      qt6ct
+      qt6Packages.qt6ct
       libsForQt5.qt5ct
       hyprshot # Screenshot utility
-      mcmojave-cursors # from my overlay
       bluetuith
       blueberry
       impala
@@ -42,12 +65,11 @@ in {
     ];
 
     programs.waybar.enable = true;
-    
+
     # programs.hyprlock.enable = true;
     # services.hypridle.enable = true;
 
     services.blueman.enable = true;
-
 
     systemd.user.services.hypr-refresh = {
       enable = true;
@@ -60,10 +82,9 @@ in {
       };
     };
 
-    services.udev.extraRules = ''
-      SUBSYSTEM=="power_supply", KERNEL=="AC", ACTION=="change", \
-      ENV{SYSTEMD_USER_WANTS}+="hypr-refresh.service"
-    '';
+	# services.udev.extraRules = ''
+	#SUBSYSTEM=="power_supply", KERNEL=="AC", ACTION=="change", \
+	#ENV{SYSTEMD_USER_WANTS}+="hypr-refresh.service"
+	#'';
   };
 }
-
