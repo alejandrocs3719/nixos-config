@@ -61,7 +61,6 @@ in
       bluetuith
       blueberry
       impala
-      nautilus
     ];
 
     programs.waybar.enable = true;

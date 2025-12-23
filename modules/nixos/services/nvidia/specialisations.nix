@@ -27,18 +27,7 @@
       ./disable-nvidia.nix
     ];
 
-    hardware.nvidia.prime = {
-      offload = {
-        enable = lib.mkForce false;
-        enableOffloadCmd = lib.mkForce false;
-      };
-      reverseSync.enable = lib.mkForce false;
-    };
-    hardware.nvidia.powerManagement = {
-      enable = lib.mkForce false; # This option requires offload enabled
-      finegrained = lib.mkForce false;
-    };
-    hardware.nvidia.dynamicBoost.enable = true;
+    graphics.nvidia.enable = lib.mkForce false;
   };
 
 }

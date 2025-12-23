@@ -16,6 +16,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+
   };
   outputs =
     {
@@ -24,6 +27,7 @@
       home-manager,
       stylix,
       plasma-manager,
+      chaotic,
       ...
     }@inputs:
     {
@@ -36,6 +40,7 @@
 	    stylix.nixosModules.stylix
             ./modules/nixos
             home-manager.nixosModules.home-manager
+	    chaotic.nixosModules.default
             {
               home-manager = {
                 useGlobalPkgs = true;

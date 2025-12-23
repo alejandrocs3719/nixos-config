@@ -14,17 +14,20 @@
   # battery.tuned.enable = true;
   battery.power-profiles-daemon.enable = true;
   asus.enable = true;
+  programs.thunar.enable = true;
   desktop.stylix.enable = true;
   desktop.hyprland.enable = true;
   graphics.nvidia.enable = true;
+  graphics.intel.enable = true;
 ##
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Use latest kernel.
-     boot.kernelPackages = pkgs.linuxPackages_latest;
-    # boot.kernelPackages = pkgs.linuxPackages_zen;
+     boot.kernelPackages = pkgs.linuxPackages_cachyos;
+     services.scx.enable = true; # by default uses scx_rustland scheduler
+    # boot.kernelPackages = pkgs.linuxPackages_latest;
 
 
   # Boot kernel parameter

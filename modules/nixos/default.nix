@@ -13,6 +13,7 @@
     ./services/tuned.nix
     ./services/power-profiles-daemon.nix
     ./services/intel-graphics.nix
+    ./programs/thunar.nix
   ];
 
 }

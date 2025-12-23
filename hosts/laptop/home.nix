@@ -1,40 +1,37 @@
 { config, pkgs, ... }:
-let 
+let
   dotfiles = "${config.home.homeDirectory}/.nixos-config/config";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
-  
+
   configs = {
-   # hypr = "hypr";
+    # hypr = "hypr";
     nvim = "nvim";
     # alacritty = "alacritty";
-   # rofi = "rofi";
-	#   waybar = "waybar";
+    # rofi = "rofi";
+    #   waybar = "waybar";
 
   };
 
 in
 
 {
-    home.username = "alejandro";
-    home.homeDirectory = "/home/alejandro";
-    home.stateVersion = "25.05";
-    programs.zsh = {
-        enable = true;
-        shellAliases = {
-            btw = "echo i use nix btw";
-        };
+  home.username = "alejandro";
+  home.homeDirectory = "/home/alejandro";
+  home.stateVersion = "25.05";
+  programs.zsh = {
+    enable = true;
+    shellAliases = {
+      btw = "echo i use nix btw";
     };
-  
+  };
 
+  # Loop to prevent code duplication
+  xdg.configFile = builtins.mapAttrs (name: subpath: {
+    source = create_symlink "${dotfiles}/${subpath}";
+    recursive = true;
 
-    # Loop to prevent code duplication
-    xdg.configFile = builtins.mapAttrs (name: subpath: {
-      source = create_symlink "${dotfiles}/${subpath}";
-      recursive = true;
-      	
-    }) configs;
+  }) configs;
 
- 
   # xdg.configFile."hypr" = {
   #     source = create_symlink "${dotfiles}/hypr";
   #     recursive = true;
@@ -50,17 +47,17 @@ in
   #     recursive = true;
   # };
 
-    home.packages = with pkgs; [
-	neovim
-	ripgrep
-	nil # LSP for Nix
-	nixpkgs-fmt
-	nodejs
-	gcc
-        fastfetch
-	impala # TUI connections manager
-    ];
-               
+  home.packages = with pkgs; [
+    neovim
+    ripgrep
+    nil # LSP for Nix
+    nixpkgs-fmt
+    nodejs
+    gcc
+    fastfetch
+    impala # TUI connections manager
+  ];
+
   home.stylix.enable = true;
   home.rofi.enable = true;
   # home.wl-sunset.enable = true;
@@ -72,5 +69,6 @@ in
   home.swaync.enable = true;
   home.waybar.enable = true;
   home.alacritty.enable = true;
+  home.kanshi.enable = true;
+  home.gtk.enable = true;
 }
-
