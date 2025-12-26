@@ -9,6 +9,7 @@ in {
     ./lutris.nix
     ./heroic.nix
     ./packages.nix
+    ./prismlauncher.nix
   ];
 
   config = lib.mkIf cfg.enable {

@@ -19,25 +19,36 @@
   modules.desktop.niri.enable = true;
   modules.gaming.enable = true;
   modules.media.enable = true;
-  # desktop.plasma.enable=true;
-  # battery.tuned.enable = true;
+
   battery.power-profiles-daemon.enable = true;
   asus.enable = true;
   programs.thunar.enable = true;
   desktop.stylix.enable = true;
   graphics.nvidia.enable = true;
   graphics.intel.enable = true;
+  
 
-  programs.niri.enable = true;
-  ##
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
+  # ---------------- BOOT LOADER ----------------
+  boot.loader.limine = {
+    enable = true;
+    style.interface.resolution = "2560x1600";
+  };
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Boot kernel parameters
+  boot.kernelParams = [
+    "i915.enable_dpcd_backlight=1"
+    "nvidia.NVreg_EnableBacklightHandler=0"
+    "nvidia.NVreg_RegistryDwords=EnableBrightnessControl=0"
+  ];
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
   services.scx.enable = true; # by default uses scx_rustland scheduler
   # boot.kernelPackages = pkgs.linuxPackages_latest;
+
+
+  # SWAP
   zramSwap = {
     enable = true;
     priority = 100;
@@ -45,12 +56,15 @@
     memoryPercent = 50;
   };
 
-  # Boot kernel parameter
-  boot.kernelParams = [
-    "i915.enable_dpcd_backlight=1"
-    "nvidia.NVreg_EnableBacklightHandler=0"
-    "nvidia.NVreg_RegistryDwords=EnableBrightnessControl=0"
-  ];
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+  nix.optimise.automatic = true;
+
+
 
   hardware.bluetooth.enable = true;
   # # Fstab equivalent
