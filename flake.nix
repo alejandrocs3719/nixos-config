@@ -11,6 +11,7 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,6 +19,13 @@
     };
 
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-gaming.url = "github:fufexan/nix-gaming";
 
   };
   outputs =
@@ -37,21 +45,23 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./hosts/laptop/configuration.nix
-	    stylix.nixosModules.stylix
+            stylix.nixosModules.stylix
             ./modules/nixos
+	    ./noctalia.nix
             home-manager.nixosModules.home-manager
-	    chaotic.nixosModules.default
+            chaotic.nixosModules.default
+	    inputs.nix-gaming.nixosModules.platformOptimizations
             {
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-		sharedModules = [ plasma-manager.homeModules.plasma-manager ];
+                sharedModules = [ plasma-manager.homeModules.plasma-manager ];
                 users.alejandro = {
-	          imports = [
-		    ./hosts/laptop/home.nix
-		    ./modules/home-manager
-		  ];
-		}; 
+                  imports = [
+                    ./hosts/laptop/home.nix
+                    ./modules/home-manager
+                  ];
+                };
                 backupFileExtension = "backup"; # If config file I downloaded already exist, it will be moved to backup directory
               };
 
@@ -70,14 +80,14 @@
             {
               home-manager = {
                 useGlobalPkgs = true;
-		useUserPackages = true;
-		sharedModules = [ plasma-manager.homeModules.plasma-manager ];
-		users.alejandro = {
-	          imports = [
-		    ./hosts/pc/home.nix
-		    ./modules/home-manager
-		  ];
-		};    
+                useUserPackages = true;
+                sharedModules = [ plasma-manager.homeModules.plasma-manager ];
+                users.alejandro = {
+                  imports = [
+                    ./hosts/pc/home.nix
+                    ./modules/home-manager
+                  ];
+                };
                 backupFileExtension = "backup"; # If config file I downloaded already exist, it will be moved to backup directory
               };
 

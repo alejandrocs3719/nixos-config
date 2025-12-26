@@ -15,16 +15,17 @@
 
       "$terminal" = "alacritty";
       "$fileManager" = "dolphin";
-      "$menu" = "rofi -show drun";
-      "$reload_waybar" = "pkill waybar; waybar &";
-      "$hide_waybar" = "pkill waybar";
+      "$menu" = "noctalia-shell ipc call launcher toggle";
+      # "$reload_waybar" = "pkill waybar; waybar &";
+      # "$hide_waybar" = "pkill waybar";
 
       # Autostart
       exec-once = [
-        "waybar"
-        "swww-daemon"
-        "hypridle"
-        "swaync"
+	"noctalia-shell"
+		#"waybar"
+		#"swww-daemon"
+		#"hypridle"
+		#"swaync"
       ];
 
       # Appeareance
@@ -40,13 +41,13 @@
       };
 
       decoration = {
-        rounding = 0;
+        rounding = 10;
         rounding_power = 2;
         active_opacity = 1.0;
         inactive_opacity = 1.0;
 
         shadow = {
-          enabled = false; # Battery Savings
+          enabled = true; # Battery Savings
           range = 4;
           render_power = 3;
           #color = "rgba(1a1a1aee)";
@@ -63,8 +64,7 @@
       };
 
       animations = {
-        enabled = "no";
-        # enabled = "yes, please :)";
+        enabled = "yes, please :)";
         bezier = [
           "easeOutQuint,0.23,1,0.32,1"
           "easeInOutCubic,0.65,0.05,0.36,1"
@@ -149,11 +149,12 @@
         "$mainMod, E, exec, $fileManager"
         "$mainMod, V, togglefloating,"
         "Alt, Space, exec, $menu"
-        "$mainMod, R, exec, $reload_waybar"
-        "$mainMod, K, exec, $hide_waybar"
+		#"$mainMod, R, exec, $reload_waybar"
+		#"$mainMod, K, exec, $hide_waybar"
         "$mainMod, P, pseudo,"
         "$mainMod, J, togglesplit,"
         "$mainMod SHIFT, S, exec, hyprshot -m region --clipboard-only"
+	"$mainMod, W, exec, noctalia-shell ipc call wallpaper toggle"
         "$mainMod, F, fullscreen, 0"
         "$mainMod SHIFT, F, fullscreenstate, 0, 2"
         "$mainMod, left, movefocus, l"
@@ -182,6 +183,8 @@
         #       "$mainMod SHIFT, 0, movetoworkspace, 10"
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
+	", XF86KbdBrightnessUp, exec, brightnessctl -d *::kbd_backlight set +33%"
+	", XF86KbdBrightnessDown, exec, brightnessctl -d *::kbd_backlight set 33%-"
       ];
 
       bindm = [
@@ -194,8 +197,8 @@
         ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
         ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-        ",XF86MonBrightnessUp, exec, brightnessctl -e4 -n2 set 5%+"
-        ",XF86MonBrightnessDown, exec, brightnessctl -e4 -n2 set 5%-"
+        ",XF86MonBrightnessUp, exec, brightnessctl -e4 -d intel_backlight set 5%+"
+        ",XF86MonBrightnessDown, exec, brightnessctl -e4 -d intel_backlight set 5%-"
       ];
 
       bindl = [

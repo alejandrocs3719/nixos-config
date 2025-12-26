@@ -2,14 +2,23 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [ 
-      ./hardware-configuration.nix
-      # ../../modules/nixos/services/disable-nvidia.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ./modules # Modules made for this host only
+    # ../../modules/nixos/services/disable-nvidia.nix
+  ];
+
+
+  modules.gaming.enable = true;
+  modules.media.enable = true;
   # desktop.plasma.enable=true;
   # battery.tuned.enable = true;
   battery.power-profiles-daemon.enable = true;
@@ -19,40 +28,46 @@
   desktop.hyprland.enable = true;
   graphics.nvidia.enable = true;
   graphics.intel.enable = true;
-##
+
+  programs.niri.enable = true;
+  ##
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Use latest kernel.
-     boot.kernelPackages = pkgs.linuxPackages_cachyos;
-     services.scx.enable = true; # by default uses scx_rustland scheduler
-    # boot.kernelPackages = pkgs.linuxPackages_latest;
-
+  boot.kernelPackages = pkgs.linuxPackages_cachyos;
+  services.scx.enable = true; # by default uses scx_rustland scheduler
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  zramSwap = {
+    enable = true;
+    priority = 100;
+    algorithm = "lz4";
+    memoryPercent = 50;
+  };
 
   # Boot kernel parameter
-  boot.kernelParams = [ 
-    "i915.enable_dpcd_backlight=1" 
-    "acpi_backlight=native"
+  boot.kernelParams = [
+    "i915.enable_dpcd_backlight=1"
     "nvidia.NVreg_EnableBacklightHandler=0"
     "nvidia.NVreg_RegistryDwords=EnableBrightnessControl=0"
   ];
 
-# # Fstab equivalent
-# fileSystems."/mnt/SSD" = {
-#  device = "/dev/disk/by-uuid/7428BB9E28BB5DB4";
-#  fsType = "ntfs";
-#  options = [ 
-#    "users" # Allows any user to mount and unmount
-#    "nofail" # Prevent system from failing if this drive doesn't mount
-#  ];
-#};
-
+  hardware.bluetooth.enable = true;
+  # # Fstab equivalent
+  # fileSystems."/mnt/SSD" = {
+  #  device = "/dev/disk/by-uuid/7428BB9E28BB5DB4";
+  #  fsType = "ntfs";
+  #  options = [
+  #    "users" # Allows any user to mount and unmount
+  #    "nofail" # Prevent system from failing if this drive doesn't mount
+  #  ];
+  #};
 
   networking.hostName = "nixandrete"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "Europe/Madrid";
@@ -64,16 +79,16 @@
   # Select internationalisation properties.
   # i18n.defaultLocale = "es_ES.UTF-8";
 
-    i18n = {
-      defaultLocale = "en_US.UTF-8";  # main system language
-      extraLocaleSettings = {
-	LC_TIME = "es_ES.UTF-8";      # spanish date
-	LC_MONETARY = "es_ES.UTF-8";  
-	LC_NUMERIC = "es_ES.UTF-8";   
-	LC_PAPER = "es_ES.UTF-8"; 
-	LC_MEASUREMENT = "es_ES.UTF-8"; 
-	};
+  i18n = {
+    defaultLocale = "en_US.UTF-8"; # main system language
+    extraLocaleSettings = {
+      LC_TIME = "es_ES.UTF-8"; # spanish date
+      LC_MONETARY = "es_ES.UTF-8";
+      LC_NUMERIC = "es_ES.UTF-8";
+      LC_PAPER = "es_ES.UTF-8";
+      LC_MEASUREMENT = "es_ES.UTF-8";
     };
+  };
 
   console = {
     font = "Lat2-Terminus16";
@@ -84,53 +99,42 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
   services.xserver = {
-     enable = true;
-     autoRepeatDelay = 200;
-     autoRepeatInterval = 35; # Key repeat rate, useful for navigating vim
+    enable = true;
+    autoRepeatDelay = 200;
+    autoRepeatInterval = 35; # Key repeat rate, useful for navigating vim
   };
-    # Power management
+  # Power management
 
-# services.tlp = {
-#     enable = true;
-#     settings = {
-#       CPU_SCALING_GOVERNOR_ON_AC = "performance";
-#       CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+  # services.tlp = {
+  #     enable = true;
+  #     settings = {
+  #       CPU_SCALING_GOVERNOR_ON_AC = "performance";
+  #       CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
-#       CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-#       CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+  #       CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+  #       CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
 
-#       CPU_MIN_PERF_ON_AC = 0;
-#       CPU_MAX_PERF_ON_AC = 100;
-#       CPU_MIN_PERF_ON_BAT = 0;
-#       CPU_MAX_PERF_ON_BAT = 20;
+  #       CPU_MIN_PERF_ON_AC = 0;
+  #       CPU_MAX_PERF_ON_AC = 100;
+  #       CPU_MIN_PERF_ON_BAT = 0;
+  #       CPU_MAX_PERF_ON_BAT = 20;
 
-#      #Optional helps save long term battery health
-#           #START_CHARGE_THRESH_BAT0 = 40; # 40 and below it starts to charge
-#      STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
+  #      #Optional helps save long term battery health
+  #           #START_CHARGE_THRESH_BAT0 = 40; # 40 and below it starts to charge
+  #      STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
 
-#     };
-# }; 
+  #     };
+  # };
   # Richard Stallman is crying:
-    nixpkgs.config.allowUnfree = true;
-  
-
-
-
-
-
-
-
-
-
+  nixpkgs.config.allowUnfree = true;
 
   services.upower = {
     enable = true;
   };
 
-
   services.pipewire = {
     enable = true;
-	# pulse.enable = true;
+    # pulse.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -139,14 +143,16 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.alejandro = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
     ];
   };
 
   programs.firefox.enable = true;
-  steam.enable = true; 
 
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
@@ -164,8 +170,11 @@
     nvme-cli
     gparted
     hyprpolkitagent
-  #  vmware-workstation
-  # brave
+    spotify
+    xwayland-satellite
+    alacritty
+    #  vmware-workstation
+    # brave
   ];
 
   programs.chromium.enable = true;
@@ -175,10 +184,13 @@
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
-  
+
   # Enable Nix Flakes:
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -223,4 +235,3 @@
   system.stateVersion = "25.05"; # Did you read the comment?
 
 }
-

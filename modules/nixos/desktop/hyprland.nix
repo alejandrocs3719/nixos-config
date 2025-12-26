@@ -46,24 +46,24 @@ in
 
     environment.systemPackages = with pkgs; [
       alacritty
-      rofi # App launcher and custom menus
-      dunst # Notifications
+	    #rofi # App launcher and custom menus
+	    #dunst # Notifications
       swww # Wallpaper daemon
       nwg-displays # Display configuration gui
       inputs.mcmojave-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default # McMojave Hyprcursor theme
       hyprpolkitagent # Needed for gui apps to request admin privilege
       brightnessctl
-      swayosd # OSD for volume or brightness changing
+	    #swayosd # OSD for volume or brightness changing
       nwg-look
-      qt6Packages.qt6ct
-      libsForQt5.qt5ct
+	    #qt6Packages.qt6ct
+	    #libsForQt5.qt5ct
       hyprshot # Screenshot utility
       bluetuith
       blueberry
       impala
     ];
 
-    programs.waybar.enable = true;
+	#programs.waybar.enable = true;
 
     # programs.hyprlock.enable = true;
     # services.hypridle.enable = true;

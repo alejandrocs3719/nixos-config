@@ -1,7 +1,8 @@
 { pkgs, lib, ... }: {
 
   imports = [
-    ./programs/steam.nix
+    ./gaming
+    ./media
     ./services/asus.nix
     ./services/low-power.nix
     ./desktop/hyprland.nix

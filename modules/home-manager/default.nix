@@ -2,7 +2,8 @@
 
   imports = [
     ./desktop/kanshi.nix
-    ./desktop/gtk.nix
+    ./gaming
+    #./desktop/gtk.nix
     ./desktop/stylix.nix
     ./desktop/kde-plasma/plasma.nix
     ./desktop/wl-sunset.nix
