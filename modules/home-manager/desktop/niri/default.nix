@@ -18,6 +18,31 @@ in {
       recursive = true;
     };
 
+    # Idle daemon:
+    services.swayidle = {
+      enable = true;
+      timeouts = [
+        # 2 min: DPMS off
+        {
+          timeout = 120;
+          command = "niri msg action power-off-monitors";
+        }
+        # 5 min: lock
+        {
+          timeout = 300;
+          command = "noctalia-shell ipc call lockScreen lock";
+        }
+        # 15 min: suspend
+        {
+          timeout = 900;
+          command = "systemctl suspend";
+        }
+      ];
+    };
+
+    # Polkit
+    services.polkit-gnome.enable = true;
+
     
   };
 }

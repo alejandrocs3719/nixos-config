@@ -70,7 +70,7 @@ in
   modules.theming.stylix.enable = true;
   home.rofi.enable = false;
   # home.wl-sunset.enable = true;
-  desktop.hyprland.enable = true;
+  desktop.hyprland.enable = false;
   # home.swayosd.enable = false;
   home.yazi.enable = true;
   home.libreoffice.enable = false;

@@ -24,6 +24,31 @@ in {
         lan_encryption_mode = 2;
         wan_encryption_mode = 2;
       };
+
+    #   applications = {
+    #     apps = [
+
+          
+    #       {
+    #         name = "Steam Gamescope 2388x1668 120Hz VRR";
+
+    #         # Gamescope + Steam Big Picture
+    #         cmd =
+    #           "gamescope -W 2388 -H 1668 -r 120 -f --adaptive-sync --hdr-enabled -- gamemoderun steam -tenfoot";
+
+    #         # Turn off/on internal laptop display (OLED protection)
+    #         prep-cmd = [
+    #           {
+    #             do = "niri msg output eDP-1 off";
+    #             undo = "niri msg output eDP-1 on";
+    #           }
+    #         ];
+
+    #         auto-detach = "false";
+    #         exclude-global-prep-cmd = "false";
+    #       }
+    #     ];
+    #   };
     };
 
   };

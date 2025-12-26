@@ -411,6 +411,9 @@ binds {
     Super+Alt+L hotkey-overlay-title="Noctalia Shell: lock the screen" { spawn-sh "noctalia-shell ipc call lockScreen lock"; }
     Super+Alt+W hotkey-overlay-title="Noctalia Shell: change wallpaper" { spawn-sh "noctalia-shell ipc call wallpaper toggle"; }
 
+    // Just in case I mess up:
+    Mod+Shift+O hotkey-overlay-title="Turn laptop screen back on" { spawn-sh "niri msg output eDP-1 on"; }
+
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
