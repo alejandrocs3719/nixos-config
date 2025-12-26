@@ -13,11 +13,12 @@
   imports = [
     ./hardware-configuration.nix
     ./modules # Modules made for this host only
-    # ../../modules/nixos/services/disable-nvidia.nix
+    ./networking/firewall.nix # Firewall rules for this host only
   ];
 
   modules.desktop.niri.enable = true;
   modules.gaming.enable = true;
+  modules.networking.sunshine.enable = true;
   modules.media.enable = true;
 
   battery.power-profiles-daemon.enable = true;
