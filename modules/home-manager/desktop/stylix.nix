@@ -7,16 +7,17 @@
 {
 
   options = {
-    home.stylix.enable = lib.mkEnableOption "Enables Stylix's home manager module";
+    modules.theming.stylix.enable = lib.mkEnableOption "Enables Stylix's home manager module";
   };
 
-  config = lib.mkIf config.home.stylix.enable {
+  config = lib.mkIf config.modules.theming.stylix.enable {
 
     nixpkgs.overlays = [
       (import ../../../overlays/mcmojave-cursors.nix)
     ];
 
     stylix = {
+    
      cursor = {
        package = pkgs.mcmojave-cursors;
        name = "McMojave-cursors";
@@ -52,11 +53,15 @@
         };
       };
       
-
       opacity = {
-	desktop = 0.7;
-	terminal = 0.7;
+        desktop = 0.7;
+        terminal = 0.7;
       };
+      
+      targets = {
+				vscode.enable = false; # Manually choose VSCode Theme
+			};
+
     };
 
   };

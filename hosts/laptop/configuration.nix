@@ -23,7 +23,7 @@
   battery.power-profiles-daemon.enable = true;
   asus.enable = true;
   programs.thunar.enable = true;
-  desktop.stylix.enable = true;
+  modules.theming.stylix.enable = true;
   graphics.nvidia.enable = true;
   graphics.intel.enable = true;
   
