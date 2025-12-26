@@ -16,7 +16,7 @@
     # ../../modules/nixos/services/disable-nvidia.nix
   ];
 
-
+  modules.desktop.niri.enable = true;
   modules.gaming.enable = true;
   modules.media.enable = true;
   # desktop.plasma.enable=true;
@@ -25,7 +25,6 @@
   asus.enable = true;
   programs.thunar.enable = true;
   desktop.stylix.enable = true;
-  desktop.hyprland.enable = true;
   graphics.nvidia.enable = true;
   graphics.intel.enable = true;
 
@@ -169,7 +168,7 @@
     lsof
     nvme-cli
     gparted
-    hyprpolkitagent
+    #hyprpolkitagent
     spotify
     xwayland-satellite
     alacritty

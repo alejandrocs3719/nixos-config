@@ -3,6 +3,7 @@
   imports = [
     ./gaming
     ./media
+    ./desktop/niri
     ./services/asus.nix
     ./services/low-power.nix
     ./desktop/hyprland.nix

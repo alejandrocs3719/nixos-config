@@ -66,6 +66,7 @@ in
   };
 
   modules.gaming.enable = true;
+  modules.desktop.niri.enable = true;
   home.stylix.enable = true;
   home.rofi.enable = false;
   # home.wl-sunset.enable = true;

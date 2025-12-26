@@ -3,6 +3,7 @@
   imports = [
     ./desktop/kanshi.nix
     ./gaming
+    ./desktop/niri
     #./desktop/gtk.nix
     ./desktop/stylix.nix
     ./desktop/kde-plasma/plasma.nix
