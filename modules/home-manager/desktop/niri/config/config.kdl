@@ -354,6 +354,20 @@ window-rule {
     open-floating true
 }
 
+// Open file chooser as centered floating window 
+window-rule {
+    match app-id=r#"^xdg-desktop-portal-gtk$"#
+
+    open-floating true
+
+    // Size
+    default-column-width { proportion 0.25; }
+    default-window-height { proportion 0.30; }
+
+    // Initial position
+    default-floating-position x=0 y=0 relative-to="top"
+}
+
 // Corner radius window rule
 window-rule {
     geometry-corner-radius 5
