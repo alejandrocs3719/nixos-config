@@ -23,6 +23,7 @@ in {
     services.displayManager.ly = {
       enable = true;
     };
+    systemd.services.display-manager.environment.XDG_CURRENT_DESKTOP = "X-NIXOS-SYSTEMD-AWARE"; # Fixes problems with swayidle's service not meeting conditions to start
   };
 }
 

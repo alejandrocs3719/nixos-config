@@ -2,11 +2,14 @@
   description = "NixOS Flake";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs"; # Prevent home manager from pulling its own version from nixpkgs avoiding mismatches package sets
     };
+
     mcmojave-hyprcursor.url = "github:libadoxon/mcmojave-hyprcursor"; # McMojave cursor for hyprcursor
+    
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
