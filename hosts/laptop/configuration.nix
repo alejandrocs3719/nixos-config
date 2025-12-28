@@ -20,6 +20,7 @@
   modules.gaming.enable = true;
   modules.networking.sunshine.enable = true;
   modules.media.enable = true;
+  modules.virtualisation.virtualbox.enable = true;
 
   battery.power-profiles-daemon.enable = true;
   asus.enable = true;

@@ -3,6 +3,7 @@
   imports = [
     ./gaming
     ./media
+    ./virtualisation/virtualbox.nix
     ./services/sunshine
     ./desktop/niri
     ./services/asus.nix
