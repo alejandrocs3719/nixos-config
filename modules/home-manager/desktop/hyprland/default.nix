@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, inputs, ... }:
 
 let
   cfg = config.modules.desktop.hyprland;
@@ -9,11 +9,10 @@ in {
 
   imports = [
     ./stylix-colors.nix # Uses Stylix color palette to rice Hyprland without committing to managing Hyprland's dotfiles in Nix
-    ./plugins.nix
   ];
 
-  config = lib.mkIf cfg.enable {
 
+  config = lib.mkIf cfg.enable {
     # mkOutOfStoreSymlink when this module in enabled
     xdg.configFile."hypr/hyprland.conf".source = create_symlink "${confPath}/hyprland.conf";
 

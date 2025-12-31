@@ -72,7 +72,7 @@ in
   # home.wl-sunset.enable = true;
   modules.desktop.hyprland = {
     enable = true;
-    stylixColors = true;
+    #stylixColors = true;
   };
   # modules.desktop.niri.enable = true;
   # home.swayosd.enable = false;

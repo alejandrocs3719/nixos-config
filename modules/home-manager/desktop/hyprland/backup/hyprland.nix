@@ -6,7 +6,6 @@
       enable = true;
       package = null;
       portalPackage = null; # To use home-manager and nixos module at the same time
-
     };
   };
 

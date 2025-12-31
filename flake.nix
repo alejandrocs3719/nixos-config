@@ -58,6 +58,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
+                extraSpecialArgs = { inherit inputs; };
                 sharedModules = [ plasma-manager.homeModules.plasma-manager ];
                 users.alejandro = {
                   imports = [
@@ -83,6 +84,7 @@
             {
               home-manager = {
                 useGlobalPkgs = true;
+                extraSpecialArgs = { inherit inputs; };
                 useUserPackages = true;
                 sharedModules = [ plasma-manager.homeModules.plasma-manager ];
                 users.alejandro = {
