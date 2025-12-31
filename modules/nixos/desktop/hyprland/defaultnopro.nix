@@ -14,10 +14,10 @@ let
 in
 {
   options = {
-    desktop.hyprland.enable = lib.mkEnableOption "Enables hyprland compositor module";
+    modules.desktop.hyprland.enable = lib.mkEnableOption "Enables hyprland compositor module";
   };
 
-  config = lib.mkIf config.desktop.hyprland.enable {
+  config = lib.mkIf config.modules.desktop.hyprland.enable {
 
     programs.hyprland = {
       enable = true;

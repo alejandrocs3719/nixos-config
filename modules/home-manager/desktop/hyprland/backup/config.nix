@@ -3,7 +3,7 @@
 
   config = lib.mkIf config.desktop.hyprland.enable {
     wayland.windowManager.hyprland.settings = {
-      # Monitores
+      # Monitors
       monitor = [
         "desc:Microstep MAG321UX OLED,3840x2160@240,1080x400,1.6,bitdepth,10,cm,hdr,sdrbrightness,1.2,sdrsaturation,0.98"
         #"desc:BNQ BenQ RL2455 56E05187SL0,1920x1080@60,0x0,1,transform,1"

@@ -6,9 +6,10 @@
     ./virtualisation/virtualbox.nix
     ./services/sunshine
     ./desktop/niri
+    ./desktop/hyprland
     ./services/asus.nix
     ./services/low-power.nix
-    ./desktop/hyprland.nix
+    ./desktop/hyprland
     ./services/amdgpu.nix
     ./desktop/stylix.nix
     ./services/bluetooth.nix

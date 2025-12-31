@@ -56,6 +56,7 @@ in
     gcc
     fastfetch
     impala # TUI connections manager
+    brave
   ];
 
   programs.vscode = {
@@ -66,11 +67,14 @@ in
   };
 
   modules.gaming.enable = true;
-  modules.desktop.niri.enable = true;
   modules.theming.stylix.enable = true;
   home.rofi.enable = false;
   # home.wl-sunset.enable = true;
-  desktop.hyprland.enable = false;
+  modules.desktop.hyprland = {
+    enable = true;
+    stylixColors = true;
+  };
+  # modules.desktop.niri.enable = true;
   # home.swayosd.enable = false;
   home.yazi.enable = true;
   home.libreoffice.enable = false;

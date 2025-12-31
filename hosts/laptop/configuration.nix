@@ -16,7 +16,8 @@
     ./networking/firewall.nix # Firewall rules for this host only
   ];
 
-  modules.desktop.niri.enable = true;
+  modules.desktop.hyprland.enable = true;
+
   modules.gaming.enable = true;
   modules.networking.sunshine.enable = true;
   modules.media.enable = true;

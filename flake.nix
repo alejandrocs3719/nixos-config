@@ -50,10 +50,10 @@
             ./hosts/laptop/configuration.nix
             stylix.nixosModules.stylix
             ./modules/nixos
-	    ./noctalia.nix
+	          ./noctalia.nix
             home-manager.nixosModules.home-manager
             chaotic.nixosModules.default
-	    inputs.nix-gaming.nixosModules.platformOptimizations
+	          inputs.nix-gaming.nixosModules.platformOptimizations
             {
               home-manager = {
                 useGlobalPkgs = true;
