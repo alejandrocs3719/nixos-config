@@ -9,12 +9,14 @@ in {
 
   imports = [
     ./stylix-colors.nix # Uses Stylix color palette to rice Hyprland without committing to managing Hyprland's dotfiles in Nix
+    ./env-vars.nix
   ];
 
 
   config = lib.mkIf cfg.enable {
     # mkOutOfStoreSymlink when this module in enabled
     xdg.configFile."hypr/hyprland.conf".source = create_symlink "${confPath}/hyprland.conf";
+
 
     # Cannot do recursive with Nix generated config files.
     # xdg.configFile."hypr" = {

@@ -21,11 +21,11 @@
 
       # Autostart
       exec-once = [
-	"noctalia-shell"
-		#"waybar"
-		#"swww-daemon"
-		#"hypridle"
-		#"swaync"
+        "noctalia-shell"
+          #"waybar"
+          #"swww-daemon"
+          #"hypridle"
+          #"swaync"
       ];
 
       # Appeareance

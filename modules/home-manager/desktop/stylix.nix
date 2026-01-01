@@ -21,7 +21,7 @@
      cursor = {
        package = pkgs.mcmojave-cursors;
        name = "McMojave-cursors";
-       size = 32; # It is scaled with the window
+       size = 24; # It is scaled with the window
      };
 
       icons = {
