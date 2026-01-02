@@ -19,11 +19,20 @@ in {
         impala # network management tui
     ];
 
+    modules.programs.thunar.enable = lib.mkDefault true;
+
     # Ly Display Manager to launch Niri:
-    services.displayManager.ly = {
+    # services.displayManager.ly = {
+    #   enable = true;
+    # };
+    # systemd.services.display-manager.environment.XDG_CURRENT_DESKTOP = "X-NIXOS-SYSTEMD-AWARE"; # Fixes problems with swayidle's service not meeting conditions to start
+
+    # Use SDDM as the display manager
+    services.displayManager.sddm = {
       enable = true;
+      wayland.enable = true;
     };
-    systemd.services.display-manager.environment.XDG_CURRENT_DESKTOP = "X-NIXOS-SYSTEMD-AWARE"; # Fixes problems with swayidle's service not meeting conditions to start
+
   };
 }
 

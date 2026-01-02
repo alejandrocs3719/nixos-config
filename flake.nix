@@ -50,6 +50,7 @@
             ./hosts/laptop/configuration.nix
             stylix.nixosModules.stylix
             ./modules/nixos
+            ./profiles/nixos
 	          ./noctalia.nix
             home-manager.nixosModules.home-manager
             chaotic.nixosModules.default
@@ -80,6 +81,7 @@
             ./hosts/pc/configuration.nix
             stylix.nixosModules.stylix
             ./modules/nixos
+            ./profiles/nixos
             home-manager.nixosModules.home-manager
             {
               home-manager = {

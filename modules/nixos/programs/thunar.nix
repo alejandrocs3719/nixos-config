@@ -7,10 +7,10 @@
 {
 
   options = {
-    thunar.enable = lib.mkEnableOption "Installs Thunar";
+    modules.programs.thunar.enable = lib.mkEnableOption "Installs Thunar";
   };
 
-  config = lib.mkIf config.thunar.enable {
+  config = lib.mkIf config.modules.programs.thunar.enable {
     programs.thunar = {
       enable = true;
       plugins = with pkgs.xfce; [

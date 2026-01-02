@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, inputs, ... }:
 
 let
   cfg = config.modules.desktop.niri;
@@ -25,17 +25,17 @@ in {
         # 2 min: DPMS off
         {
           timeout = 120;
-          command = "niri msg action power-off-monitors";
+          command = "${pkgs.niri}/bin/niri msg action power-off-monitors";
         }
         # 5 min: lock
         {
-          timeout = 300;
-          command = "noctalia-shell ipc call lockScreen lock";
+          timeout = 20;
+          command = "${inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/noctalia-shell ipc call lockScreen lock";
         }
         # 15 min: suspend
         {
-          timeout = 900;
-          command = "systemctl suspend";
+          timeout = 25;
+          command = "${pkgs.systemd}/bin/systemctl suspend";
         }
       ];
     };

@@ -16,16 +16,20 @@
     ./networking/firewall.nix # Firewall rules for this host only
   ];
 
-  modules.desktop.hyprland.enable = true;
+  profiles.desktop.kdeniri.enable = true;
+
 
   modules.gaming.enable = true;
   modules.networking.sunshine.enable = true;
   modules.media.enable = true;
-  modules.virtualisation.virtualbox.enable = true;
+  
+  modules.virtualisation = {
+    enable = true;
+    virtualbox.enable = true;
+  };
 
   battery.power-profiles-daemon.enable = true;
   asus.enable = true;
-  programs.thunar.enable = true;
   modules.theming.stylix.enable = true;
   graphics.nvidia.enable = true;
   graphics.intel.enable = true;
@@ -35,6 +39,13 @@
   boot.loader.limine = {
     enable = true;
     style.interface.resolution = "2560x1600";
+    maxGenerations = 10;
+    # Dual Boot with Windows
+    extraEntries = ''
+        /Windows
+          protocol: efi
+          path: uuid(ac43a9e6-0138-4ad4-a70b-82fd64e6d562):/EFI/Microsoft/Boot/bootmgfw.efi
+      '';
   };
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -63,7 +74,7 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 30d";
+    options = "--delete-older-than 15d";
   };
   nix.optimise.automatic = true;
 
@@ -187,8 +198,8 @@
     gparted
     #hyprpolkitagent
     spotify
-    xwayland-satellite
     alacritty
+    texliveFull
     #  vmware-workstation
     # brave
   ];

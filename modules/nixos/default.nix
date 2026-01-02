@@ -3,7 +3,7 @@
   imports = [
     ./gaming
     ./media
-    ./virtualisation/virtualbox.nix
+    ./virtualisation
     ./services/sunshine
     ./desktop/niri
     ./desktop/hyprland
@@ -13,7 +13,7 @@
     ./services/amdgpu.nix
     ./desktop/stylix.nix
     ./services/bluetooth.nix
-    ./desktop/kde.nix
+    ./desktop/kde
     ./services/nvidia
     ./services/tuned.nix
     ./services/power-profiles-daemon.nix

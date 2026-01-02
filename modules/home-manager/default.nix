@@ -2,7 +2,9 @@
 
   imports = [
     ./desktop/kanshi.nix
+    ./virtualisation
     ./gaming
+    ./dev
     ./desktop/niri
     ./desktop/hyprland
     #./desktop/gtk.nix

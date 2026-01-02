@@ -18,11 +18,12 @@ in
   home.username = "alejandro";
   home.homeDirectory = "/home/alejandro";
   home.stateVersion = "25.05";
-  programs.zsh = {
+  programs.bash = {
     enable = true;
-    shellAliases = {
-      btw = "echo i use nix btw";
-    };
+    initExtra = ''
+      # One line prompt (arregla lo de .venv arriba)
+      PS1='\[\033[1;32m\][\u@\h:\w]\$\[\033[0m\] '
+    '';
   };
 
   # Loop to prevent code duplication
@@ -68,12 +69,18 @@ in
 
   modules.gaming.enable = true;
   modules.theming.stylix.enable = true;
+  modules.dev.enable = true;
+  modules.virtualisation.enable = true;
+
+
+  
   home.rofi.enable = false;
   # home.wl-sunset.enable = true;
-  modules.desktop.hyprland = {
-    enable = true;
-    #stylixColors = true;
-  };
+  # modules.desktop.hyprland = {
+  #   enable = true;
+  #   stylixColors = true;
+  # };
+  modules.desktop.niri.enable = true;
   # modules.desktop.niri.enable = true;
   # home.swayosd.enable = false;
   home.yazi.enable = true;
