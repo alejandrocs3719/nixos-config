@@ -8,7 +8,7 @@
     ./desktop/niri
     ./desktop/hyprland
     #./desktop/gtk.nix
-    ./desktop/stylix.nix
+    #./desktop/stylix.nix
     ./desktop/kde-plasma/plasma.nix
     ./desktop/wl-sunset.nix
     ./desktop/swayosd.nix

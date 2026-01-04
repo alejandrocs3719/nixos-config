@@ -29,12 +29,12 @@ in {
         }
         # 5 min: lock
         {
-          timeout = 20;
+          timeout = 300;
           command = "${inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/noctalia-shell ipc call lockScreen lock";
         }
         # 15 min: suspend
         {
-          timeout = 25;
+          timeout = 900;
           command = "${pkgs.systemd}/bin/systemctl suspend";
         }
       ];

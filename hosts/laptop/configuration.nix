@@ -16,9 +16,9 @@
     ./networking/firewall.nix # Firewall rules for this host only
   ];
 
-  profiles.desktop.kdeniri.enable = true;
+  #profiles.desktop.kdeniri.enable = true;
 
-
+  modules.desktop.kde.enable = true;
   modules.gaming.enable = true;
   modules.networking.sunshine.enable = true;
   modules.media.enable = true;
@@ -30,7 +30,7 @@
 
   battery.power-profiles-daemon.enable = true;
   asus.enable = true;
-  modules.theming.stylix.enable = true;
+  #modules.theming.stylix.enable = true;
   graphics.nvidia.enable = true;
   graphics.intel.enable = true;
   

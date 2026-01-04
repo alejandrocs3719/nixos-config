@@ -90,7 +90,7 @@ output "eDP-1" {
     // If the mode is omitted altogether or is invalid, niri will pick one automatically.
     // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
     mode "2560x1600@240"
-    variable-refresh-rate
+    variable-refresh-rate on-demand=true
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
     scale 1.5
 
@@ -366,6 +366,13 @@ window-rule {
 
     // Initial position
     default-floating-position x=0 y=0 relative-to="top"
+}
+
+// Enable on-demand VRR when mpv displays on the output.
+window-rule {
+    match app-id="^mpv$"
+
+    variable-refresh-rate true
 }
 
 // Corner radius window rule

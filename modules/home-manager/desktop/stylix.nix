@@ -5,7 +5,7 @@
   ...
 }:
 {
-
+  # it's out of default.nix!!!
   options = {
     modules.theming.stylix.enable = lib.mkEnableOption "Enables Stylix's home manager module";
   };

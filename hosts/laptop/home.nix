@@ -68,7 +68,7 @@ in
   };
 
   modules.gaming.enable = true;
-  modules.theming.stylix.enable = true;
+  #modules.theming.stylix.enable = true;
   modules.dev.enable = true;
   modules.virtualisation.enable = true;
 
@@ -80,12 +80,12 @@ in
   #   enable = true;
   #   stylixColors = true;
   # };
-  modules.desktop.niri.enable = true;
+  #modules.desktop.niri.enable = true;
   # modules.desktop.niri.enable = true;
   # home.swayosd.enable = false;
   home.yazi.enable = true;
-  home.libreoffice.enable = false;
-  home.onlyoffice.enable = false;
+  home.libreoffice.enable = true;
+  home.onlyoffice.enable = true;
   home.swaync.enable = false;
   home.waybar.enable = false;
   home.alacritty.enable = true;
