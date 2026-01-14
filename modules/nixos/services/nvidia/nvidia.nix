@@ -19,7 +19,8 @@
   ];
   hardware.nvidia.open = true;
   hardware.nvidia.modesetting.enable = true; # nvidia-drm.modeset=1
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
+  #hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.latest;
   hardware.nvidia.prime = {
     offload = {
       enable = true;

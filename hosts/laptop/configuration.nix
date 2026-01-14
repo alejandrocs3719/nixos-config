@@ -57,9 +57,9 @@
   ];
 
   # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_cachyos;
-  services.scx.enable = true; # by default uses scx_rustland scheduler
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  #boot.kernelPackages = pkgs.linuxPackages_cachyos;
+  #services.scx.enable = true; # by default uses scx_rustland scheduler
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
 
   # SWAP
@@ -186,10 +186,10 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
+    pciutils
     btop
     lua-language-server
     nil
-    prismlauncher
     powertop
     vesktop
     jdk
@@ -200,6 +200,7 @@
     spotify
     alacritty
     texliveFull
+    virt-viewer
     #  vmware-workstation
     # brave
   ];

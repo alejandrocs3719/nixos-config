@@ -21,8 +21,6 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -38,7 +36,6 @@
       home-manager,
       stylix,
       plasma-manager,
-      chaotic,
       ...
     }@inputs:
     {
@@ -53,7 +50,6 @@
             ./profiles/nixos
 	          ./noctalia.nix
             home-manager.nixosModules.home-manager
-            chaotic.nixosModules.default
 	          inputs.nix-gaming.nixosModules.platformOptimizations
             {
               home-manager = {
