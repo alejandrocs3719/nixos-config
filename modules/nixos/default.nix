@@ -6,12 +6,11 @@
     ./virtualisation
     ./services/sunshine
     ./desktop/niri
-    ./desktop/hyprland
     ./services/asus.nix
     ./services/low-power.nix
     ./desktop/hyprland
     ./services/amdgpu.nix
-    ./desktop/stylix.nix
+    #./desktop/stylix.nix
     ./services/bluetooth.nix
     ./desktop/kde
     ./services/nvidia
@@ -19,6 +18,7 @@
     ./services/power-profiles-daemon.nix
     ./services/intel-graphics.nix
     ./programs/thunar.nix
+    ./programs/nemo.nix
   ];
 
 }

@@ -14,25 +14,34 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/688dd682-c7a1-4d6c-b55a-c57e5c7e79bf";
+    { device = "/dev/mapper/cryptroot";
       fsType = "ext4";
     };
 
+  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/82abca62-0289-455b-91fb-c2feb8d6b3fd";
+
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/F1A0-9E44";
+    { device = "/dev/disk/by-uuid/33AA-8457";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  swapDevices = [ ];
+  fileSystems."/mnt/ssd" = {
+    device = "/dev/disk/by-uuid/876c2a2d-019e-4cb0-ae89-7e680668a933";
+    fsType = "ext4";
+    options = [ # If you don't have this options attribute, it'll default to "defaults" 
+      # boot options for fstab. Search up fstab mount options you can use
+      "users" # Allows any user to mount and unmount
+      "nofail" # Prevent system from failing if this drive doesn't mount
+      "exec" # Permit execution of binaries and other executable files
+      "x-gvfs-show"
+    ];
+  };
 
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp9s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp8s0.useDHCP = lib.mkDefault true;
+
+
+
+  swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

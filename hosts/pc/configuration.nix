@@ -2,28 +2,92 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [ 
-      ./hardware-configuration.nix
-    ];
-  desktop.hyprland.enable = true;
-  graphics.amd.enable = true;
-  desktop.stylix.enable = true;
-  bluetooth.enable = true;
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
+  imports = [
+    ./hardware-configuration.nix
+    #./networking/firewall.nix # Firewall rules for this host only
+  ];
+# Temporary fix, remove when https://github.com/NixOS/nixpkgs/issues/483540 is closed.
+# Completely disables the `shaderc` feature that was broken by https://github.com/NixOS/nixpkgs/pull/477464.
+nixpkgs.overlays = [
+  (final: prev: {
+    ffmpeg-full = prev.ffmpeg-full.override { withShaderc = false; };
+  })
+];
+  modules.desktop.hyprland.enable = true;
+  modules.gaming.enable = true;
+  modules.networking.sunshine.enable = true;
+  modules.media.enable = true;
+  
+  modules.programs.nemo.enable = true;
+
+  modules.virtualisation = {
+    enable = true;
+    virtualbox.enable = true;
+  };
+
+  modules.graphics.amd.enable = true;
+
+  # ---------------- BOOT LOADER ----------------
+  boot.loader.limine = {
+    enable = true;
+    maxGenerations = 10;
+    # Dual Boot with Windows
+    extraEntries = ''
+      '';
+  };
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Boot kernel parameters
+  boot.kernelParams = [
+    "video=DP-2:3840x2160@240"
+    "video=HDMI-A-3:1920x1080@60"
+  ];
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+
+  # SWAP
+  zramSwap = {
+    enable = true;
+    priority = 100;
+    algorithm = "lz4";
+    memoryPercent = 50;
+  };
+
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 15d";
+  };
+  nix.optimise.automatic = true;
+
+
+
+  hardware.bluetooth.enable = true;
+  # # Fstab equivalent
+  # fileSystems."/mnt/SSD" = {
+  #  device = "/dev/disk/by-uuid/7428BB9E28BB5DB4";
+  #  fsType = "ntfs";
+  #  options = [
+  #    "users" # Allows any user to mount and unmount
+  #    "nofail" # Prevent system from failing if this drive doesn't mount
+  #  ];
+  #};
+
   networking.hostName = "nixgrandete"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "Europe/Madrid";
@@ -33,7 +97,19 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "es_ES.UTF-8";
+  # i18n.defaultLocale = "es_ES.UTF-8";
+
+  i18n = {
+    defaultLocale = "en_US.UTF-8"; # main system language
+    extraLocaleSettings = {
+      LC_TIME = "es_ES.UTF-8"; # spanish date
+      LC_MONETARY = "es_ES.UTF-8";
+      LC_NUMERIC = "es_ES.UTF-8";
+      LC_PAPER = "es_ES.UTF-8";
+      LC_MEASUREMENT = "es_ES.UTF-8";
+    };
+  };
+
   console = {
     font = "Lat2-Terminus16";
     keyMap = "es";
@@ -43,74 +119,68 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
   services.xserver = {
-     enable = true;
-     autoRepeatDelay = 200;
-     autoRepeatInterval = 35; # Key repeat rate, useful for navigating vim
+    enable = true;
   };
-    # Power management
 
-  # Richard Stallman is crying:
-    nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
 
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
+  services.upower = {
+    enable = true;
+  };
 
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Enable sound.
-  # services.pulseaudio.enable = true;
-  # OR
   services.pipewire = {
     enable = true;
-	# pulse.enable = true;
+    # pulse.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.libinput.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  programs.zsh.enable = true;
   users.users.alejandro = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    shell = pkgs.zsh;
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      tree
     ];
   };
 
   programs.firefox.enable = true;
-  programs.nm-applet.enable = true;
-  steam.enable = true; 
 
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
-    alacritty
+    pciutils
     btop
     lua-language-server
-    nil # Nix language server
-    prismlauncher
+    nil
     powertop
     vesktop
-    bottles
-    vmware-workstation
-    brave
+    jdk
+    lsof
+    nvme-cli
+    gparted
+    spotify
+    alacritty
+    texliveFull
+    virt-viewer
   ];
 
-
-
-  virtualisation.vmware.host.enable = true;
+  programs.chromium.enable = true;
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
-  
+
   # Enable Nix Flakes:
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -155,4 +225,3 @@
   system.stateVersion = "25.05"; # Did you read the comment?
 
 }
-

@@ -31,7 +31,7 @@
   battery.power-profiles-daemon.enable = true;
   asus.enable = true;
   #modules.theming.stylix.enable = true;
-  graphics.nvidia.enable = true;
+  modules.graphics.nvidia.enable = true;
   graphics.intel.enable = true;
   
 

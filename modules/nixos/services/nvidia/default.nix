@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 
 let
-  cfg = config.graphics.nvidia;
+  cfg = config.modules.graphics.nvidia;
 in {
-  options.graphics.nvidia.enable = lib.mkEnableOption "Enables Nvidia graphics card configuration";
+  options.modules.graphics.nvidia.enable = lib.mkEnableOption "Enables Nvidia graphics card configuration";
 
   imports = [
     ./nvidia.nix

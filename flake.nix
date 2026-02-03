@@ -28,6 +28,8 @@
 
     nix-gaming.url = "github:fufexan/nix-gaming";
 
+    hyprdynamicmonitors.url = "github:fiffeek/hyprdynamicmonitors";
+
   };
   outputs =
     {
@@ -36,6 +38,7 @@
       home-manager,
       stylix,
       plasma-manager,
+      hyprdynamicmonitors,
       ...
     }@inputs:
     {
@@ -49,24 +52,29 @@
             ./modules/nixos
             ./profiles/nixos
 	          ./noctalia.nix
-            home-manager.nixosModules.home-manager
 	          inputs.nix-gaming.nixosModules.platformOptimizations
-            {
+            inputs.hyprdynamicmonitors.nixosModules.default
+            home-manager.nixosModules.home-manager
+            ({ config, ... }: {
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                extraSpecialArgs = { inherit inputs; };
+                extraSpecialArgs = { 
+                  inherit inputs; 
+                  inherit (config.networking) hostName;
+                };
                 sharedModules = [ plasma-manager.homeModules.plasma-manager ];
                 users.alejandro = {
                   imports = [
                     ./hosts/laptop/home.nix
                     ./modules/home-manager
+                    hyprdynamicmonitors.homeManagerModules.default
                   ];
                 };
                 backupFileExtension = "backup"; # If config file I downloaded already exist, it will be moved to backup directory
               };
 
-            }
+            })
           ];
         }; # nixandrete
 
@@ -78,23 +86,30 @@
             stylix.nixosModules.stylix
             ./modules/nixos
             ./profiles/nixos
+	          inputs.nix-gaming.nixosModules.platformOptimizations
+            inputs.hyprdynamicmonitors.nixosModules.default
             home-manager.nixosModules.home-manager
-            {
+            ({ config, ... }: {
+
               home-manager = {
                 useGlobalPkgs = true;
-                extraSpecialArgs = { inherit inputs; };
+                extraSpecialArgs = { 
+                  inherit inputs; 
+                  inherit (config.networking) hostName;
+                };
                 useUserPackages = true;
                 sharedModules = [ plasma-manager.homeModules.plasma-manager ];
                 users.alejandro = {
                   imports = [
                     ./hosts/pc/home.nix
                     ./modules/home-manager
+                    hyprdynamicmonitors.homeManagerModules.default
                   ];
                 };
                 backupFileExtension = "backup"; # If config file I downloaded already exist, it will be moved to backup directory
               };
 
-            }
+            })
           ];
         }; # nixgrandete
 

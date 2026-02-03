@@ -6,11 +6,8 @@
 }:
 {
 
-  #  options = {
-  #graphics.nvidia.enable = lib.mkEnableOption "Enables Nvidia Graphics Module (and Intel Graphics too)";
-  #};
+  config = lib.mkIf config.modules.graphics.nvidia.enable {
 
-  #config = lib.mkIf config.graphics.nvidia.enable {
   nixpkgs.config.allowUnfree = true;
   # Nvidia Drivers with prime offloading and power management features:
   hardware.graphics.enable = true;
@@ -40,6 +37,8 @@
   boot.extraModprobeConfig = ''
     options nvidia NVreg_EnableS0ixPowerManagement=1
   '';
-  #};
+
+
+  };
 
 }
