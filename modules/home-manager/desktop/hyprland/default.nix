@@ -21,11 +21,17 @@ in
 
   config = lib.mkIf cfg.enable {
     # mkOutOfStoreSymlink when this module in enabled
-    xdg.configFile."hypr/hyprland.conf".source = create_symlink "${confPath}/hyprland.conf";
-    xdg.configFile."hypr/hypridle.conf".source = create_symlink "${confPath}/hypridle.conf";
-    xdg.configFile."hypr/hyprlock.conf".source = create_symlink "${confPath}/hyprlock.conf";
-    xdg.configFile."hypr/hyprpaper.conf".source = create_symlink "${confPath}/hyprpaper.conf";
-    xdg.configFile."hypr/hyprsunset.conf".source = create_symlink "${confPath}/hyprsunset.conf";
+    xdg.configFile."hypr/hyprland.conf".source = create_symlink "${confPath}/hypr/hyprland.conf";
+    xdg.configFile."hypr/hypridle.conf".source = create_symlink "${confPath}/hypr/hypridle.conf";
+    xdg.configFile."hypr/hyprlock.conf".source = create_symlink "${confPath}/hypr/hyprlock.conf";
+    xdg.configFile."hypr/hyprpaper.conf".source = create_symlink "${confPath}/hypr/hyprpaper.conf";
+    xdg.configFile."hypr/hyprsunset.conf".source = create_symlink "${confPath}/hypr/hyprsunset.conf";
+
+    xdg.configFile."hyprdynamicmonitors" = {
+       source = create_symlink "${confPath}/hyprdynamicmonitors";
+       recursive = true;
+    };
+
 
     # Cannot do recursive with Nix generated config files.
     # xdg.configFile."hypr" = {
@@ -54,7 +60,7 @@ in
     home.hyprdynamicmonitors = {
       enable = true;
       # the configFile approach needs nrs each time the file is changed
-      configFile = ./config/config.toml;
+      configFile = ./config/hyprdynamicmonitors/config.toml;
     };
   };
 }

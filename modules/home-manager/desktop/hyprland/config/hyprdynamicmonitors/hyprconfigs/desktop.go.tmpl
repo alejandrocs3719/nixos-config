@@ -1,0 +1,41 @@
+{{- $primary := index .MonitorsByTag "primary" -}}
+{{- $secondary := index .MonitorsByTag "secondary" -}}
+
+{{- if $primary }}
+# primary - Primary external display
+monitor=desc:{{$primary.Description}},3840x2160@240.00000,0x0,1.5,transform,0,vrr,1
+
+# primary - Assigned workspaces:
+workspace = 1,monitor:{{$primary.Name}},default:true
+workspace = 2,monitor:{{$primary.Name}}
+workspace = 3,monitor:{{$primary.Name}}
+workspace = 4,monitor:{{$primary.Name}}
+workspace = 5,monitor:{{$primary.Name}}
+
+exec = hyprctl dispatch moveworkspacetomonitor 1 {{$primary.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 2 {{$primary.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 3 {{$primary.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 4 {{$primary.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 5 {{$primary.Name}}
+
+{{- end }}
+
+{{- if $secondary }}
+# secondary - Secondary display
+monitor={{$secondary.Name}},1920x1080@60.00000,-1130x-340,1.0,transform,1,vrr,0
+
+# secondary - Assigned workspaces:
+workspace = 6,monitor:{{$secondary.Name}},default:true
+workspace = 7,monitor:{{$secondary.Name}}
+workspace = 8,monitor:{{$secondary.Name}}
+workspace = 9,monitor:{{$secondary.Name}}
+workspace = 10,monitor:{{$secondary.Name}}
+
+exec = hyprctl dispatch moveworkspacetomonitor 6 {{$secondary.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 7 {{$secondary.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 8 {{$secondary.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 9 {{$secondary.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 10 {{$secondary.Name}}
+
+{{- end }}
+

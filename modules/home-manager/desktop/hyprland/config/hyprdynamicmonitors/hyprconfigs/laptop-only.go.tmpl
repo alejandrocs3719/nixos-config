@@ -1,0 +1,38 @@
+{{- $laptop := index .MonitorsByTag "laptop" -}}
+# Configuration generated for power state: {{.PowerState}}
+
+{{- if $laptop -}}
+
+{{- if isOnBattery }}
+monitor={{$laptop.Name}},2560x1600@60.00000,0x0,1.6,vrr,0
+{{- else }}
+
+# AC mode: Full performance
+monitor={{$laptop.Name}},2560x1600@240.00000,0x0,1.6,vrr,1
+{{- end -}}
+
+# Workspace assignment: when only using the laptop's monitor, all the workspaces should belong to it.
+workspace = 1,monitor:{{$laptop.Name}},default:true
+workspace = 2,monitor:{{$laptop.Name}}
+workspace = 3,monitor:{{$laptop.Name}}
+workspace = 4,monitor:{{$laptop.Name}}
+workspace = 5,monitor:{{$laptop.Name}}
+workspace = 6,monitor:{{$laptop.Name}}
+workspace = 7,monitor:{{$laptop.Name}}
+workspace = 8,monitor:{{$laptop.Name}}
+workspace = 9,monitor:{{$laptop.Name}}
+
+exec = hyprctl dispatch moveworkspacetomonitor 1 {{$laptop.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 2 {{$laptop.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 3 {{$laptop.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 4 {{$laptop.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 5 {{$laptop.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 6 {{$laptop.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 7 {{$laptop.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 8 {{$laptop.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 9 {{$laptop.Name}}
+
+{{- end -}} # if laptop
+
+
+
