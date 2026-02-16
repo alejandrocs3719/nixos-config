@@ -1,0 +1,72 @@
+[general]
+destination = "$HOME/.config/hypr/monitors.conf"
+
+[power_events]
+
+[power_events.dbus_query_object]
+path = "/org/freedesktop/UPower/devices/line_power_ACAD"
+
+[[power_events.dbus_signal_match_rules]]
+object_path = "/org/freedesktop/UPower/devices/line_power_ACAD"
+
+
+
+# Setup 1 
+[profiles.Setup1]
+config_file = "/home/alejandro/.config/hyprdynamicmonitors/hyprconfigs/Setup1.go.tmpl"
+config_file_type = "template"
+[profiles.Setup1.conditions]
+
+[[profiles.Setup1.conditions.required_monitors]]
+description = "Samsung Display Corp. ATNA60DL01-0"
+monitor_tag = "laptop"
+
+[[profiles.Setup1.conditions.required_monitors]]
+description = "Microstep MAG321UX OLED"
+monitor_tag = "primary"
+
+[[profiles.Setup1.conditions.required_monitors]]
+description = "BNQ BenQ RL2455 56E05187SL0"
+monitor_tag = "secondary"
+
+
+# Setup 2 
+#   [profiles.setup2]
+#   config_file = "/home/alejandro/.config/hyprdynamicmonitors/hyprconfigs/setup2.go.tmpl"
+#   config_file_type = "template"
+#   [profiles.setup2.conditions]
+
+#   [[profiles.setup2.conditions.required_monitors]]
+#   description = "Samsung Display Corp. ATNA60DL01-0"
+#   monitor_tag = "laptop"
+
+#   [[profiles.setup2.conditions.required_monitors]]
+#   description = "ASUSTek COMPUTER INC VG27AQ1A M5LMQS016788"
+#   monitor_tag = "primary"
+
+
+# Desktop setup 
+[profiles.desktop]
+config_file = "/home/alejandro/.config/hyprdynamicmonitors/hyprconfigs/Setup1.go.tmpl"
+config_file_type = "template"
+[profiles.desktop.conditions]
+
+[[profiles.desktop.conditions.required_monitors]]
+description = "Microstep MAG321UX OLED"
+monitor_tag = "primary"
+
+[[profiles.desktop.conditions.required_monitors]]
+description = "BNQ BenQ RL2455 56E05187SL0"
+monitor_tag = "secondary"
+
+
+# Laptop screen only
+[profiles.laptop-only]
+config_file = "/home/alejandro/.config/hyprdynamicmonitors/hyprconfigs/laptop-only.go.tmpl"
+config_file_type = "template"
+[profiles.laptop-only.conditions]
+
+[[profiles.laptop-only.conditions.required_monitors]]
+description = "Samsung Display Corp. ATNA60DL01-0"
+monitor_tag = "laptop"
+pre_apply_exec = "notify-send 'Dynamic Monitor Switching' 'Activating laptop screen only profile'"

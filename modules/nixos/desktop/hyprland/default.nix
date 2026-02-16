@@ -43,22 +43,33 @@ in
       hyprpolkitagent # Needed for gui apps to request admin privilege
       grim # Screenshot utility
       slurp # Select part of the screen
+      hypridle # Idle daemon
       wl-clipboard
       file-roller # archive manager
       bibata-modern-classic-hyprcursor
     ];
 
+    services.displayManager.sddm = {
+	  enable = true;
+	  wayland = {
+	    enable = true;
+
+	    # default compositor is "weston", you can optionally change it to kwin
+	    #compositor = "kwin";
+	  };
+     };
+
     # Ly Display Manager to launch Hyprland:
-    services.displayManager.ly = {
-      enable = true;
-      settings = {
-        animation = "gameoflife";
-        gameoflife_frame_delay = 10;
-        gameoflife_fg = "0x0000FF00";
-        gameoflife_initial_density = 0.4;
-        gameoflife_entropy_interval = 0;
-      };
-    };
+  # services.displayManager.ly = {
+  #   enable = true;
+  #   settings = {
+  #     animation = "gameoflife";
+  #     gameoflife_frame_delay = 10;
+  #     gameoflife_fg = "0x0000FF00";
+  #     gameoflife_initial_density = 0.4;
+  #     gameoflife_entropy_interval = 0;
+  #   };
+  # };
     # systemd.services.display-manager.environment.XDG_CURRENT_DESKTOP = "X-NIXOS-SYSTEMD-AWARE"; # Fixes problems with swayidle's service not meeting conditions to start
 
   };

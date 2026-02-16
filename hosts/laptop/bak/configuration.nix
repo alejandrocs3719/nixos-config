@@ -6,62 +6,60 @@
   config,
   lib,
   pkgs,
-  inputs,
   ...
 }:
 
 {
   imports = [
     ./hardware-configuration.nix
-    #./networking/firewall.nix # Firewall rules for this host only
+    ./modules # Modules made for this host only
+    ./networking/firewall.nix # Firewall rules for this host only
   ];
 
-  modules.desktop.hyprland.enable = true;
-  #modules.desktop.kde.enable = true;
+  #profiles.desktop.kdeniri.enable = true;
+
+  modules.desktop.kde.enable = true;
   modules.gaming.enable = true;
   modules.networking.sunshine.enable = true;
   modules.media.enable = true;
   
-  modules.programs.nemo.enable = true;
-
   modules.virtualisation = {
     enable = true;
     virtualbox.enable = true;
   };
 
+  battery.power-profiles-daemon.enable = true;
+  asus.enable = true;
+  #modules.theming.stylix.enable = true;
   modules.graphics.nvidia.enable = true;
+  graphics.intel.enable = true;
+  
 
   # ---------------- BOOT LOADER ----------------
   boot.loader.limine = {
     enable = true;
+    style.interface.resolution = "2560x1600";
     maxGenerations = 10;
     # Dual Boot with Windows
     extraEntries = ''
+        /Windows
+          protocol: efi
+          path: uuid(ac43a9e6-0138-4ad4-a70b-82fd64e6d562):/EFI/Microsoft/Boot/bootmgfw.efi
       '';
   };
   boot.loader.efi.canTouchEfiVariables = true;
 
-
-
-  
-  # ---------------- KERNEL ----------------
- 
-# nixpkgs.overlays = [
-#   inputs.nix-cachyos-kernel.overlays.pinned
-# ];
-
-# nix.settings.substituters = ["https://attic.xuyh0120.win/lantian"];
-# nix.settings.trusted-public-keys = ["lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="];
-
   # Boot kernel parameters
   boot.kernelParams = [
     "i915.enable_dpcd_backlight=1"
+    "nvidia.NVreg_EnableBacklightHandler=0"
+    "nvidia.NVreg_RegistryDwords=EnableBrightnessControl=0"
   ];
 
   # Use latest kernel.
-  # boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelPackages = pkgs.linuxPackages_6_18;
+  #boot.kernelPackages = pkgs.linuxPackages_cachyos;
+  #services.scx.enable = true; # by default uses scx_rustland scheduler
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
 
   # SWAP
@@ -129,8 +127,32 @@
   # services.xserver.enable = true;
   services.xserver = {
     enable = true;
+    autoRepeatDelay = 200;
+    autoRepeatInterval = 35; # Key repeat rate, useful for navigating vim
   };
+  # Power management
 
+  # services.tlp = {
+  #     enable = true;
+  #     settings = {
+  #       CPU_SCALING_GOVERNOR_ON_AC = "performance";
+  #       CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+  #       CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+  #       CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+
+  #       CPU_MIN_PERF_ON_AC = 0;
+  #       CPU_MAX_PERF_ON_AC = 100;
+  #       CPU_MIN_PERF_ON_BAT = 0;
+  #       CPU_MAX_PERF_ON_BAT = 20;
+
+  #      #Optional helps save long term battery health
+  #           #START_CHARGE_THRESH_BAT0 = 40; # 40 and below it starts to charge
+  #      STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
+
+  #     };
+  # };
+  # Richard Stallman is crying:
   nixpkgs.config.allowUnfree = true;
 
   services.upower = {
@@ -142,16 +164,18 @@
     # pulse.enable = true;
   };
 
+  # Enable touchpad support (enabled default in most desktopManager).
+  # services.libinput.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  programs.zsh.enable = true;
   users.users.alejandro = {
     isNormalUser = true;
-    shell = pkgs.zsh;
     extraGroups = [
       "wheel"
       "networkmanager"
     ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
+      tree
     ];
   };
 
@@ -172,13 +196,18 @@
     lsof
     nvme-cli
     gparted
+    #hyprpolkitagent
     spotify
     alacritty
     texliveFull
-    ntfs3g
+    virt-viewer
+    #  vmware-workstation
+    # brave
   ];
 
   programs.chromium.enable = true;
+
+  #virtualisation.vmware.host.enable = true;
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono

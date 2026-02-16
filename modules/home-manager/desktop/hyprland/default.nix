@@ -44,7 +44,7 @@ in
 
     
     # Idle daemon
-    services.hypridle.enable = true;
+    # services.hypridle.enable = true; # I'm currently enabling it as a system wide package and calling it from hyprland.conf
     # Lock screen
     programs.hyprlock.enable = true;
     # Night light
@@ -53,8 +53,8 @@ in
     # Monitor management with hyprdynamicmonitors
     home.hyprdynamicmonitors = {
       enable = true;
-      # Or use a configuration file
-      #configFile = ./config.toml;
+      # the configFile approach needs nrs each time the file is changed
+      configFile = ./config/config.toml;
     };
   };
 }

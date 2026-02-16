@@ -114,13 +114,13 @@
 
     "hyprland/workspaces": {
 	"disable-scroll": true,
-	"all-outputs": true,
+	"all-outputs": false,
 	"warp-on-scroll": false,
   	"format": "{icon}",
   	"on-click": "activate",
-	"persistent-workspaces": {
-	   "*": 9
-	},
+////////"persistent-workspaces": {
+////////   "*": 10
+////////},
   	"format-icons": {
  	   "urgent": "",
  	   "active": "",
@@ -129,7 +129,7 @@
     },
 
     "hyprland/language": {
-      "format": "{short}",
+      "format": "{short} {variant}",
     },
 
     "power-profiles-daemon": {

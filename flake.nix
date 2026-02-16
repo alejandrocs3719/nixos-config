@@ -30,6 +30,8 @@
 
     hyprdynamicmonitors.url = "github:fiffeek/hyprdynamicmonitors";
 
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+
   };
   outputs =
     {
@@ -39,6 +41,7 @@
       stylix,
       plasma-manager,
       hyprdynamicmonitors,
+      nix-cachyos-kernel,
       ...
     }@inputs:
     {
@@ -51,8 +54,8 @@
             stylix.nixosModules.stylix
             ./modules/nixos
             ./profiles/nixos
-	          ./noctalia.nix
-	          inputs.nix-gaming.nixosModules.platformOptimizations
+	    ./noctalia.nix
+	    inputs.nix-gaming.nixosModules.platformOptimizations
             inputs.hyprdynamicmonitors.nixosModules.default
             home-manager.nixosModules.home-manager
             ({ config, ... }: {

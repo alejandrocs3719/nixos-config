@@ -29,7 +29,7 @@
         ./disable-nvidia.nix
       ];
 
-      graphics.nvidia.enable = lib.mkForce false;
+      modules.graphics.nvidia.enable = lib.mkForce false;
     };
   };
 }

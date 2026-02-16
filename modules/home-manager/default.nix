@@ -8,7 +8,8 @@
     ./desktop/niri
     ./desktop/hyprland
     ./desktop/gtk.nix
-    #./desktop/stylix.nix
+    #./desktop/stlix.nix
+    ./zathura.nix
     ./nemo.nix
     ./desktop/cursor.nix
     ./desktop/rofi

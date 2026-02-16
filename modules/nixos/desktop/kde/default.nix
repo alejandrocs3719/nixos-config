@@ -24,7 +24,7 @@ in {
 
     environment.systemPackages = with pkgs; [
       mpv # video player
-      plasma-panel-colorizer
+      # plasma-panel-colorizer
     ];
   };
 }

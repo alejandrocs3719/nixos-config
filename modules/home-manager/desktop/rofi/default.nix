@@ -15,6 +15,7 @@ in {
     xdg.configFile."rofi/config.rasi".source = create_symlink "${confPath}/config.rasi";
     xdg.configFile."rofi/colors.rasi".source = create_symlink "${confPath}/colors.rasi";
     xdg.configFile."rofi/themes/dtos-center.rasi".source = create_symlink "${confPath}/themes/dtos-center.rasi";
+    xdg.configFile."rofi/themes/big-icons.rasi".source = create_symlink "${confPath}/themes/big-icons.rasi";
 
 
     # Cannot do recursive with Nix generated config files.
