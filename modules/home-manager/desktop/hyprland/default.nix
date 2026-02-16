@@ -27,8 +27,8 @@ in
     xdg.configFile."hypr/hyprpaper.conf".source = create_symlink "${confPath}/hypr/hyprpaper.conf";
     xdg.configFile."hypr/hyprsunset.conf".source = create_symlink "${confPath}/hypr/hyprsunset.conf";
 
-    xdg.configFile."hyprdynamicmonitors" = {
-       source = create_symlink "${confPath}/hyprdynamicmonitors";
+    xdg.configFile."hyprdynamicmonitors/hyprconfigs/" = {
+       source = create_symlink "${confPath}/hyprdynamicmonitors/hyprconfigs/";
        recursive = true;
     };
 

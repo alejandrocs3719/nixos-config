@@ -22,6 +22,9 @@
   modules.networking.sunshine.enable = true;
   modules.media.enable = true;
   
+  battery.power-profiles-daemon.enable = true;
+  asus.enable = true;
+  
   modules.programs.nemo.enable = true;
 
   modules.virtualisation = {
@@ -30,7 +33,7 @@
   };
 
   modules.graphics.nvidia.enable = true;
-
+  modules.graphics.intel.enable = true;
   # ---------------- BOOT LOADER ----------------
   boot.loader.limine = {
     enable = true;
@@ -176,6 +179,7 @@
     alacritty
     texliveFull
     ntfs3g
+    networkmanagerapplet
   ];
 
   programs.chromium.enable = true;

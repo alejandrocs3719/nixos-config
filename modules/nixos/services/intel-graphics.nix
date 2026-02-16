@@ -8,10 +8,10 @@
 {
 
   options = {
-    graphics.intel.enable = lib.mkEnableOption "Enables Intel Graphics";
+   modules.graphics.intel.enable = lib.mkEnableOption "Enables Intel Graphics";
   };
 
-  config = lib.mkIf config.graphics.intel.enable {
+  config = lib.mkIf config.modules.graphics.intel.enable {
     services.xserver.videoDrivers = [ "modesetting" ];
     hardware.graphics = {
       enable = true;
