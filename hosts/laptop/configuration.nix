@@ -16,6 +16,10 @@
     #./networking/firewall.nix # Firewall rules for this host only
   ];
 
+  nixpkgs.overlays = [
+    (import ../../overlays/autopsy.nix)
+  ];
+
   modules.desktop.hyprland.enable = true;
   #modules.desktop.kde.enable = true;
   modules.gaming.enable = true;
@@ -180,6 +184,8 @@
     texliveFull
     ntfs3g
     networkmanagerapplet
+    autopsy
+    perl # Needed by autopsy
   ];
 
   programs.chromium.enable = true;
