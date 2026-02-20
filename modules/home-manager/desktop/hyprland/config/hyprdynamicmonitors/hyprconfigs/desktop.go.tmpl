@@ -10,7 +10,7 @@ render {
   cm_enabled = true
   send_content_type = true
 
-  cm_fs_passthrough = 2 # HDR passthrough
+  cm_fs_passthrough = 1 # HDR passthrough
   cm_auto_hdr = 1       # in fullscreen, change to cm,hdr
 
   direct_scanout = 2    # auto scanout with content type 'game' (less lag)
@@ -26,10 +26,10 @@ monitorv2 {
   scale = 1.5
 
   bitdepth = 10
-  cm = wide             # wide gamut (BT.2020 primaries).
+  cm = hdr
 
   # SDR content when in HDR
-  sdrbrightness = 1.20
+  sdrbrightness = 1.3
   sdrsaturation = 0.98
 
   # VRR per-monitor (si prefieres por monitor en vez de global misc:vrr)

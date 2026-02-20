@@ -19,6 +19,7 @@
   modules.gaming.enable = true;
   modules.networking.sunshine.enable = true;
   modules.media.enable = true;
+  modules.services.ddcutil.enable = true;
   
   modules.programs.nemo.enable = true;
 

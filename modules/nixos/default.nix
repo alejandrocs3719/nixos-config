@@ -10,6 +10,7 @@
     ./services/low-power.nix
     ./desktop/hyprland
     ./services/amdgpu.nix
+    ./services/ddcutil.nix
     #./desktop/stylix.nix
     ./services/bluetooth.nix
     ./desktop/kde
