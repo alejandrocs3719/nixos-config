@@ -113,7 +113,6 @@ in
     fastfetch
     impala # TUI connections manager
     brave
-    kdePackages.kdenlive # Video editor
   ];
 
   programs.vscode = {

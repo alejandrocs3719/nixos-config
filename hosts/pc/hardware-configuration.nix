@@ -18,28 +18,13 @@
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/82abca62-0289-455b-91fb-c2feb8d6b3fd";
+  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/b512b78c-3c0c-4487-9349-45c3d0317081";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/33AA-8457";
+    { device = "/dev/disk/by-uuid/596E-6AAD";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
-
-  fileSystems."/mnt/ssd" = {
-    device = "/dev/disk/by-uuid/876c2a2d-019e-4cb0-ae89-7e680668a933";
-    fsType = "ext4";
-    options = [ # If you don't have this options attribute, it'll default to "defaults" 
-      # boot options for fstab. Search up fstab mount options you can use
-      "users" # Allows any user to mount and unmount
-      "nofail" # Prevent system from failing if this drive doesn't mount
-      "exec" # Permit execution of binaries and other executable files
-      "x-gvfs-show"
-    ];
-  };
-
-
-
 
   swapDevices = [ ];
 

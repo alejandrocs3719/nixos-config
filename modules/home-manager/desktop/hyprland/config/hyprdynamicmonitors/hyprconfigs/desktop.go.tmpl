@@ -3,7 +3,38 @@
 
 {{- if $primary }}
 # primary - Primary external display
-monitor=desc:{{$primary.Description}},3840x2160@240.00000,0x0,1.5,transform,0,vrr,1
+#monitor=desc:{{$primary.Description}},3840x2160@240.00000,0x0,1.5,transform,0,vrr,1
+
+
+render {
+  cm_enabled = true
+  send_content_type = true
+
+  cm_fs_passthrough = 2 # HDR passthrough
+  cm_auto_hdr = 1       # in fullscreen, change to cm,hdr
+
+  direct_scanout = 2    # auto scanout with content type 'game' (less lag)
+}
+
+# =========================
+#  Monitor (monitorv2)
+# =========================
+monitorv2 {
+  output = desc:{{$primary.Description}}
+  mode = 3840x2160@240.00000
+  position = 0x0
+  scale = 1.5
+
+  bitdepth = 10
+  cm = wide             # wide gamut (BT.2020 primaries).
+
+  # SDR content when in HDR
+  sdrbrightness = 1.20
+  sdrsaturation = 0.98
+
+  # VRR per-monitor (si prefieres por monitor en vez de global misc:vrr)
+  vrr = 2
+}
 
 # primary - Assigned workspaces:
 workspace = 1,monitor:{{$primary.Name}},default:true
@@ -22,7 +53,7 @@ exec = hyprctl dispatch moveworkspacetomonitor 5 {{$primary.Name}}
 
 {{- if $secondary }}
 # secondary - Secondary display
-monitor={{$secondary.Name}},1920x1080@60.00000,-1130x-340,1.0,transform,1,vrr,0
+monitor={{$secondary.Name}},1920x1080@60.00000,-1080x-480,1.0,transform,1,vrr,0
 
 # secondary - Assigned workspaces:
 workspace = 6,monitor:{{$secondary.Name}},default:true
