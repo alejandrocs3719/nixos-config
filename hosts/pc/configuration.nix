@@ -15,16 +15,11 @@
     #./networking/firewall.nix # Firewall rules for this host only
   ];
 # Temporary fix, remove when https://github.com/NixOS/nixpkgs/issues/483540 is closed.
-# Completely disables the `shaderc` feature that was broken by https://github.com/NixOS/nixpkgs/pull/477464.
-nixpkgs.overlays = [
-  (final: prev: {
-    ffmpeg-full = prev.ffmpeg-full.override { withShaderc = false; };
-  })
-];
   modules.desktop.hyprland.enable = true;
   modules.gaming.enable = true;
   modules.networking.sunshine.enable = true;
   modules.media.enable = true;
+  modules.services.ddcutil.enable = true;
   
   modules.programs.nemo.enable = true;
 
@@ -47,8 +42,6 @@ nixpkgs.overlays = [
 
   # Boot kernel parameters
   boot.kernelParams = [
-    "video=DP-2:3840x2160@240"
-    "video=HDMI-A-3:1920x1080@60"
   ];
 
   # Use latest kernel.
@@ -70,8 +63,17 @@ nixpkgs.overlays = [
     options = "--delete-older-than 15d";
   };
   nix.optimise.automatic = true;
-
-
+ 
+  fileSystems."/mnt/ssd2tb" = {
+     device = "/dev/disk/by-uuid/876c2a2d-019e-4cb0-ae89-7e680668a933";
+     fsType = "ext4";
+     options = [ # If you don't have this options attribute, it'll default to "defaults" 
+       # boot options for fstab. Search up fstab mount options you can use
+       "users" # Allows any user to mount and unmount
+       "nofail" # Prevent system from failing if this drive doesn't mount
+       "exec" # Permit execution of binaries and other executable files
+     ];
+   };
 
   hardware.bluetooth.enable = true;
   # # Fstab equivalent
@@ -166,7 +168,7 @@ nixpkgs.overlays = [
     spotify
     alacritty
     texliveFull
-    virt-viewer
+    ntfs3g
   ];
 
   programs.chromium.enable = true;
