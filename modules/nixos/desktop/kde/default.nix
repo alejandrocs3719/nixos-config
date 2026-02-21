@@ -24,6 +24,7 @@ in {
 
     environment.systemPackages = with pkgs; [
       mpv # video player
+      kdePackages.krohnkite
       # plasma-panel-colorizer
     ];
   };

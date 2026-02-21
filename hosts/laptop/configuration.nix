@@ -14,6 +14,7 @@
   imports = [
     ./hardware-configuration.nix
     #./networking/firewall.nix # Firewall rules for this host only
+    ./modules
   ];
 
   nixpkgs.overlays = [

@@ -2,7 +2,6 @@
 {
 
   imports = [
-    ./brightness.nix
   ];
 
   # Multi-gpu setup. TODO: build this conditionally depending on the host

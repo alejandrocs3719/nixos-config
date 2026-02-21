@@ -127,10 +127,10 @@ in
   modules.theming.gtk.enable = true;
 
   # home.wl-sunset.enable = true;
-  modules.desktop.hyprland = {
-    enable = true;
-    #   stylixColors = true;
-  };
+ modules.desktop.hyprland = {
+   enable = true;
+   #   stylixColors = true;
+ };
   #modules.desktop.niri.enable = true;
   # modules.desktop.niri.enable = true;
   # home.swayosd.enable = false;
@@ -140,5 +140,4 @@ in
   home.swaync.enable = false;
   home.alacritty.enable = true;
   home.kanshi.enable = false;
-  #home.gtk.enable = true;
 }

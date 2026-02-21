@@ -31,18 +31,18 @@ monitor_tag = "secondary"
 
 
 # Setup 2 
-#   [profiles.setup2]
-#   config_file = "/home/alejandro/.config/hyprdynamicmonitors/hyprconfigs/setup2.go.tmpl"
-#   config_file_type = "template"
-#   [profiles.setup2.conditions]
+[profiles.setup2]
+config_file = "/home/alejandro/.config/hyprdynamicmonitors/hyprconfigs/setup2.go.tmpl"
+config_file_type = "template"
+[profiles.setup2.conditions]
 
-#   [[profiles.setup2.conditions.required_monitors]]
-#   description = "Samsung Display Corp. ATNA60DL01-0"
-#   monitor_tag = "laptop"
+[[profiles.setup2.conditions.required_monitors]]
+description = "Samsung Display Corp. ATNA60DL01-0"
+monitor_tag = "laptop"
 
-#   [[profiles.setup2.conditions.required_monitors]]
-#   description = "ASUSTek COMPUTER INC VG27AQ1A M5LMQS016788"
-#   monitor_tag = "primary"
+[[profiles.setup2.conditions.required_monitors]]
+description = "ASUSTek COMPUTER INC VG27AQ1A M5LMQS016788"
+monitor_tag = "primary"
 
 
 # Desktop setup 

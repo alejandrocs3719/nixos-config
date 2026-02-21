@@ -4,11 +4,34 @@
 {{- if $laptop -}}
 
 {{- if isOnBattery }}
-monitor={{$laptop.Name}},2560x1600@60.00000,0x0,1.6,vrr,0
+monitor={{$laptop.Name}},2560x1600@60.00000,0x0,1.6,vrr,1
 {{- else }}
 
 # AC mode: Full performance
-monitor={{$laptop.Name}},2560x1600@240.00000,0x0,1.6,vrr,1
+#monitor={{$laptop.Name}},2560x1600@240.00000,0x0,1.6,vrr,0,cm,hdr
+
+# =========================
+#  Monitor (monitorv2)
+# =========================
+monitorv2 {
+  output = desc:{{$laptop.Description}}
+  mode = 3840x2160@240.00000
+  position = 0x0
+  scale = 1.6
+
+  bitdepth = 10
+  cm = dcip3
+
+  # SDR content when in HDR
+  sdrbrightness = 1.3
+  sdrsaturation = 0.98
+
+  # VRR per-monitor
+  vrr = 2
+
+  # Force HDR 
+  supports_hdr = 1
+}
 {{- end -}}
 
 # Workspace assignment: when only using the laptop's monitor, all the workspaces should belong to it.
