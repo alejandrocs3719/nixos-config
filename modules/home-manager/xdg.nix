@@ -20,10 +20,13 @@
         "libreoffice-writer.desktop";
       "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" = "libreoffice-calc.desktop";
       "x-scheme-handler/mailto" = "emacsclient-mail.desktop";
-      
+
       # Default file manager
       "inode/directory" = [ "nemo.desktop" ];
       "application/x-gnome-saved-search" = [ "nemo.desktop" ];
     };
   };
+
+  # Exports XDG_* environment variables, creates XDG dirs automatically, etc.
+  xdg.enable = true;
 }
