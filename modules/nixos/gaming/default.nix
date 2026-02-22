@@ -28,6 +28,7 @@ in {
       extraPackages = [ pkgs.gamescope ];
       extest.enable = true; # Enables Steam Input on Wayland
       platformOptimizations.enable = true; # needs nix-gaming: fixes Fallout 76 (splitlock mitigate)
+      protontricks.enable = true; # Installing it as a package does not work.
 
     };
 

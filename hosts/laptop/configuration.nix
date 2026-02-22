@@ -19,6 +19,7 @@
 
   nixpkgs.overlays = [
     (import ../../overlays/autopsy.nix)
+    inputs.nix-cachyos-kernel.overlays.pinned
   ];
 
   modules.desktop.hyprland.enable = true;
@@ -26,6 +27,8 @@
   modules.gaming.enable = true;
   modules.networking.sunshine.enable = true;
   modules.media.enable = true;
+  
+  modules.services.ddcutil.enable = true;
   
   battery.power-profiles-daemon.enable = true;
   asus.enable = true;
@@ -53,13 +56,9 @@
 
   
   # ---------------- KERNEL ----------------
- 
-# nixpkgs.overlays = [
-#   inputs.nix-cachyos-kernel.overlays.pinned
-# ];
 
-# nix.settings.substituters = ["https://attic.xuyh0120.win/lantian"];
-# nix.settings.trusted-public-keys = ["lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="];
+# nix.settings.substituters = [ "https://attic.xuyh0120.win/lantian" ];
+# nix.settings.trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
 
   # Boot kernel parameters
   boot.kernelParams = [
@@ -67,10 +66,10 @@
   ];
 
   # Use latest kernel.
-  # boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  #boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
+  #boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelPackages = pkgs.linuxPackages_6_18;
-
+  #  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-x86_64-v3;
 
   # SWAP
   zramSwap = {
