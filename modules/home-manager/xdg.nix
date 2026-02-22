@@ -43,4 +43,11 @@
   home.sessionVariables = {
     TERMINAL = "alacritty"; # Default terminal
   };
+
+  dconf.settings = {
+    "org/cinnamon/desktop/default-applications/terminal" = {
+      exec = "alacritty";
+      exec-arg = "-e";
+    };
+  };
 }
