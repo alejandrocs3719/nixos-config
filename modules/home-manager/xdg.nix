@@ -21,6 +21,16 @@
       "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" = "libreoffice-calc.desktop";
       "x-scheme-handler/mailto" = "emacsclient-mail.desktop";
 
+      # Default web browser:
+      "text/html" = "firefox.desktop";
+      "x-scheme-handler/http" = "firefox.desktop";
+      "x-scheme-handler/https" = "firefox.desktop";
+      "x-scheme-handler/about" = "firefox.desktop";
+      "x-scheme-handler/unknown" = "firefox.desktop";
+
+      # Default terminal:
+      "x-scheme-handler/terminal" = "alacritty.desktop";
+
       # Default file manager
       "inode/directory" = [ "nemo.desktop" ];
       "application/x-gnome-saved-search" = [ "nemo.desktop" ];
@@ -29,4 +39,8 @@
 
   # Exports XDG_* environment variables, creates XDG dirs automatically, etc.
   xdg.enable = true;
+
+  home.sessionVariables = {
+    TERMINAL = "alacritty"; # Default terminal
+  };
 }
