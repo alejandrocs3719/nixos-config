@@ -127,19 +127,17 @@ in
   modules.dev.enable = true;
   modules.virtualisation.enable = true;
   modules.theming.gtk.enable = true;
+  modules.media.mpd.enable = true;
 
   # home.wl-sunset.enable = true;
- modules.desktop.hyprland = {
-   enable = true;
-   #   stylixColors = true;
- };
-  #modules.desktop.niri.enable = true;
-  # modules.desktop.niri.enable = true;
-  # home.swayosd.enable = false;
+  modules.desktop.hyprland = {
+    enable = true;
+    # stylixColors = true;
+  };
+  
   home.yazi.enable = true;
   home.libreoffice.enable = true;
   home.onlyoffice.enable = true;
   home.swaync.enable = false;
   home.alacritty.enable = true;
-  home.kanshi.enable = false;
 }

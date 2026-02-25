@@ -7,10 +7,10 @@
 {
 
   options = {
-    home.wl-sunset.enable = lib.mkEnableOption "Enables wl-sunset";
+    modules.desktop.wl-sunset.enable = lib.mkEnableOption "Enables wl-sunset";
   };
 
-  config = lib.mkIf config.home.wl-sunset.enable {
+  config = lib.mkIf config.modules.desktop.wl-sunset.enable {
 
     # Night mode
     services.wlsunset = {

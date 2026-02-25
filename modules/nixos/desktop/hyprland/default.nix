@@ -32,10 +32,9 @@ in
 
 
     environment.systemPackages = with pkgs; [
-      alacritty # Terminal of my choosing and Hyprland's default
+      alacritty # Terminal of my choosing
       brightnessctl
       rofi # launcher of choice, not managed by home manager
-      impala # network management tui
       bluetui # bluetooth device selection tui
       wiremix # output device selection tui
       nwg-displays # Display configuration gui
@@ -49,27 +48,27 @@ in
       bibata-modern-classic-hyprcursor
     ];
 
-    services.displayManager.sddm = {
-	  enable = true;
-	  wayland = {
-	    enable = true;
+#   services.displayManager.sddm = {
+#   enable = true;
+#   wayland = {
+#     enable = true;
 
-	    # default compositor is "weston", you can optionally change it to kwin
-	    #compositor = "kwin";
-	  };
-     };
+#     # default compositor is "weston", you can optionally change it to kwin
+#     #compositor = "kwin";
+#   };
+#    };
 
     # Ly Display Manager to launch Hyprland:
-  # services.displayManager.ly = {
-  #   enable = true;
-  #   settings = {
-  #     animation = "gameoflife";
-  #     gameoflife_frame_delay = 10;
-  #     gameoflife_fg = "0x0000FF00";
-  #     gameoflife_initial_density = 0.4;
-  #     gameoflife_entropy_interval = 0;
-  #   };
-  # };
+   services.displayManager.ly = {
+     enable = true;
+     settings = {
+       animation = "gameoflife";
+       gameoflife_frame_delay = 10;
+       gameoflife_fg = "0x0000FF00";
+       gameoflife_initial_density = 0.4;
+       gameoflife_entropy_interval = 0;
+     };
+   };
     # systemd.services.display-manager.environment.XDG_CURRENT_DESKTOP = "X-NIXOS-SYSTEMD-AWARE"; # Fixes problems with swayidle's service not meeting conditions to start
 
   };

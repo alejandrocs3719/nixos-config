@@ -32,6 +32,7 @@ in
        recursive = true;
     };
 
+    wayland.windowManager.hyprland.systemd.enable = true; # Whether to enable hyprland-session.target on hyprland startup. This links to graphical-session.target
 
     # Cannot do recursive with Nix generated config files.
     # xdg.configFile."hypr" = {
@@ -50,7 +51,7 @@ in
 
     
     # Idle daemon
-    # services.hypridle.enable = true; # I'm currently enabling it as a system wide package and calling it from hyprland.conf
+    #services.hypridle.enable = true; # I'm currently enabling it as a system wide package and calling it from hyprland.conf
     # Lock screen
     programs.hyprlock.enable = true;
     # Night light

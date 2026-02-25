@@ -9,6 +9,7 @@
     ./desktop/hyprland
     ./desktop/gtk.nix
     #./desktop/stlix.nix
+    ./media/mpd.nix
     ./zathura.nix
     ./nemo.nix
     ./desktop/cursor.nix

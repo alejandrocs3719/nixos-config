@@ -11,10 +11,12 @@ in {
 
   config = lib.mkIf cfg.enable {
     services.xserver.enable = true; # optional
-    services.displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-    };
+#   services.displayManager.sddm = {
+#     enable = true;
+#     wayland.enable = true;
+#   };
+    services.displayManager.plasma-login-manager.enable = true;
+
     services.desktopManager.plasma6.enable = true;
 
     environment.plasma6.excludePackages = with pkgs.kdePackages; [
@@ -25,7 +27,10 @@ in {
     environment.systemPackages = with pkgs; [
       mpv # video player
       kdePackages.krohnkite
-      # plasma-panel-colorizer
+    ];
+
+    fonts.packages = with pkgs; [
+      rubik
     ];
   };
 }
