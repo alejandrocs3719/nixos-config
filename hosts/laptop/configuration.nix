@@ -25,7 +25,7 @@
   modules.desktop.hyprland.enable = true;
   #modules.desktop.kde.enable = true;
   modules.gaming.enable = true;
-  modules.networking.sunshine.enable = true;
+  # modules.networking.sunshine.enable = true;
   modules.media.enable = true;
   
   modules.services.ddcutil.enable = true;
@@ -186,6 +186,7 @@
     networkmanagerapplet
     autopsy
     perl # Needed by autopsy
+    vulkan-hdr-layer-kwin6 # hdr with nvidia
   ];
 
   programs.chromium.enable = true;

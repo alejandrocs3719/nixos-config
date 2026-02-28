@@ -24,7 +24,7 @@
 
     home.packages = with pkgs; [
       playerctl
-      ncmpcpp
+      # ncmpcpp # broken atm
     ];
 
   };
