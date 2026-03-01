@@ -51,7 +51,7 @@ in
 
     
     # Idle daemon
-    #services.hypridle.enable = true; # I'm currently enabling it as a system wide package and calling it from hyprland.conf
+    services.hypridle.enable = true;
     # Lock screen
     programs.hyprlock.enable = true;
     # Night light
