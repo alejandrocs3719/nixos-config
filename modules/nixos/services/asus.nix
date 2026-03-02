@@ -8,7 +8,7 @@
     services = {
 	asusd = {
 	  enable = true;
-	  enableUserService = true;
+	  # enableUserService = true; no longer needed apparently
 	};
 	supergfxd.enable = false; # they told me on the asus linux discord this was no longer needed.  
     };

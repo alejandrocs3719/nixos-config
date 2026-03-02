@@ -187,6 +187,8 @@
     autopsy
     perl # Needed by autopsy
     vulkan-hdr-layer-kwin6 # hdr with nvidia
+    freecad
+    obsidian # note-taking app
   ];
 
   programs.chromium.enable = true;
