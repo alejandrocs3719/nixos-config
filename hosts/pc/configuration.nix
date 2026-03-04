@@ -14,13 +14,13 @@
     ./hardware-configuration.nix
     #./networking/firewall.nix # Firewall rules for this host only
   ];
-# Temporary fix, remove when https://github.com/NixOS/nixpkgs/issues/483540 is closed.
+  # Temporary fix, remove when https://github.com/NixOS/nixpkgs/issues/483540 is closed.
   modules.desktop.hyprland.enable = true;
   modules.gaming.enable = true;
   modules.networking.sunshine.enable = true;
   modules.media.enable = true;
   modules.services.ddcutil.enable = true;
-  
+
   modules.programs.nemo.enable = true;
 
   modules.virtualisation = {
@@ -30,13 +30,20 @@
 
   modules.graphics.amd.enable = true;
 
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = false;
+      PermitRootLogin = "no";
+    };
+  };
+
   # ---------------- BOOT LOADER ----------------
   boot.loader.limine = {
     enable = true;
     maxGenerations = 10;
     # Dual Boot with Windows
-    extraEntries = ''
-      '';
+    extraEntries = "";
   };
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -47,7 +54,6 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-
   # SWAP
   zramSwap = {
     enable = true;
@@ -56,24 +62,24 @@
     memoryPercent = 50;
   };
 
-
   nix.gc = {
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 15d";
   };
   nix.optimise.automatic = true;
- 
+
   fileSystems."/mnt/ssd2tb" = {
-     device = "/dev/disk/by-uuid/876c2a2d-019e-4cb0-ae89-7e680668a933";
-     fsType = "ext4";
-     options = [ # If you don't have this options attribute, it'll default to "defaults" 
-       # boot options for fstab. Search up fstab mount options you can use
-       "users" # Allows any user to mount and unmount
-       "nofail" # Prevent system from failing if this drive doesn't mount
-       "exec" # Permit execution of binaries and other executable files
-     ];
-   };
+    device = "/dev/disk/by-uuid/876c2a2d-019e-4cb0-ae89-7e680668a933";
+    fsType = "ext4";
+    options = [
+      # If you don't have this options attribute, it'll default to "defaults"
+      # boot options for fstab. Search up fstab mount options you can use
+      "users" # Allows any user to mount and unmount
+      "nofail" # Prevent system from failing if this drive doesn't mount
+      "exec" # Permit execution of binaries and other executable files
+    ];
+  };
 
   hardware.bluetooth.enable = true;
   # # Fstab equivalent
@@ -169,6 +175,7 @@
     alacritty
     texliveFull
     ntfs3g
+    rsync
   ];
 
   programs.chromium.enable = true;
