@@ -33,6 +33,7 @@ in
     };
 
     wayland.windowManager.hyprland.systemd.enable = true; # Whether to enable hyprland-session.target on hyprland startup. This links to graphical-session.target
+    wayland.windowManager.hyprland.systemd.variables = ["--all"]; # https://wiki.hypr.land/Nix/Hyprland-on-Home-Manager/
 
     # Cannot do recursive with Nix generated config files.
     # xdg.configFile."hypr" = {

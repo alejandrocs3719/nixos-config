@@ -27,12 +27,12 @@
   modules.gaming.enable = true;
   # modules.networking.sunshine.enable = true;
   modules.media.enable = true;
-  
+
   modules.services.ddcutil.enable = true;
-  
+
   battery.power-profiles-daemon.enable = true;
   asus.enable = true;
-  
+
   modules.programs.nemo.enable = true;
 
   modules.virtualisation = {
@@ -47,18 +47,24 @@
     enable = true;
     maxGenerations = 10;
     # Dual Boot with Windows
-    extraEntries = ''
-      '';
+    extraEntries = "";
   };
   boot.loader.efi.canTouchEfiVariables = true;
 
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = false;
+      PermitRootLogin = "no";
+    };
+  };
 
+  services.usbmuxd.enable = true;
 
-  
   # ---------------- KERNEL ----------------
 
-# nix.settings.substituters = [ "https://attic.xuyh0120.win/lantian" ];
-# nix.settings.trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
+  # nix.settings.substituters = [ "https://attic.xuyh0120.win/lantian" ];
+  # nix.settings.trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
 
   # Boot kernel parameters
   boot.kernelParams = [
@@ -79,15 +85,12 @@
     memoryPercent = 50;
   };
 
-
   nix.gc = {
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 15d";
   };
   nix.optimise.automatic = true;
-
-
 
   hardware.bluetooth.enable = true;
   # # Fstab equivalent
@@ -189,6 +192,9 @@
     vulkan-hdr-layer-kwin6 # hdr with nvidia
     freecad
     obsidian # note-taking app
+    rsync
+    usbmuxd # usb multiplexing daemon (ios devices)
+    libimobiledevice
   ];
 
   programs.chromium.enable = true;

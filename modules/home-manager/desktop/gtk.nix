@@ -17,16 +17,25 @@
     gtk = {
       enable = true;
 
-     theme = {
-       name = "Colloid-Green";
-       package = pkgs.colloid-gtk-theme.override {
-          #colorVariants = [ "dark" ];
-         themeVariants = [ "green" ];
-         tweaks = [
-           "black"
-         ];
-       };
-     };
+      # theme = {
+      #   name = "Colloid-Green";
+      #   package = pkgs.colloid-gtk-theme.override {
+      #      #colorVariants = [ "dark" ];
+      #     themeVariants = [ "green" ];
+      #     tweaks = [
+      #       "black"
+      #     ];
+      #   };
+      # };
+
+      theme = {
+        name = "catppuccin-mocha-green-compact";
+        package = pkgs.catppuccin-gtk.override {
+          accents = [ "green" ];
+          size = "compact";
+          variant = "mocha";
+        };
+      };
 
       font = {
         name = "Rubik Regular";
@@ -53,7 +62,6 @@
         extraConfig.gtk-application-prefer-dark-theme = true;
       };
     };
-  
 
   };
 

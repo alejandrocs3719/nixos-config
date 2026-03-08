@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Script: hypr-brightness-rofi.sh
+# Script: hypr-brightness.sh
 # Opens Rofi to change focused monitor brightness
 
 # Check dependencies
@@ -34,7 +34,10 @@ MON_NAME="$FOCUSED_MON"
 
 # 2. Pedir brillo con rofi (0–100)
 # Ponemos "50" como valor por defecto editable
-BRIGHTNESS=$(printf "20\n40\n60\n80\n100" | rofi -dmenu -p "Brightness 0-100 (${MON_NAME})" -lines 1)
+
+#BRIGHTNESS=$(printf "20\n40\n60\n80\n100" | rofi -dmenu -p "Brightness 0-100 (${MON_NAME})" -lines 1)
+
+BRIGHTNESS=$(rofi -dmenu -p "Brightness 0-100 (${MON_NAME})" -lines 1)
 
 # If rofi is cancelled:
 if [[ -z "$BRIGHTNESS" ]]; then
