@@ -14,7 +14,7 @@ in
 
   imports = [
     # ./env-vars.nix # My environment variables are on a separate file.
-    ./plugins.nix # System managed plugins
+    # ./plugins.nix # System managed plugins
   ];
 
   config = lib.mkIf cfg.enable {

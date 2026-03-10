@@ -22,6 +22,15 @@
     inputs.nix-cachyos-kernel.overlays.pinned
   ];
 
+# systemd.services.reset-gpu-after-resume = {
+#   description = "Reset Intel GPU after suspend";
+#   wantedBy = [ "post-resume.target" ];
+#   serviceConfig = {
+#     Type = "oneshot";
+#     ExecStart = "/run/current-system/sw/bin/sh -c 'echo 1 > /sys/class/drm/card0/device/reset'";
+#   };
+# };
+
   modules.desktop.hyprland.enable = true;
   #modules.desktop.kde.enable = true;
   modules.gaming.enable = true;
@@ -73,8 +82,8 @@
 
   # Use latest kernel.
   #boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
-  #boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelPackages = pkgs.linuxPackages_6_18;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_6_18;
   #  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-x86_64-v3;
 
   # SWAP
