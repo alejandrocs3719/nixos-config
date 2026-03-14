@@ -4,7 +4,7 @@
 {{- if $laptop -}}
 
 {{- if isOnBattery }}
-monitor={{$laptop.Name}},2560x1600@60.00000,0x0,1.6,vrr,1
+monitor={{$laptop.Name}},2560x1600@60.00000,0x0,1.33,vrr,1
 {{- else }}
 
 # AC mode: Full performance
@@ -12,9 +12,9 @@ monitor={{$laptop.Name}},2560x1600@60.00000,0x0,1.6,vrr,1
 
 
 render {
-  cm_fs_passthrough = 1 # HDR passthrough
-  cm_auto_hdr = 1       # in fullscreen, change to cm,hdr
-  direct_scanout = 2    # auto scanout with content type 'game' (less lag)
+#  cm_fs_passthrough = 1 # HDR passthrough
+#  cm_auto_hdr = 1       # in fullscreen, change to cm,hdr
+#  direct_scanout = 2    # auto scanout with content type 'game' (less lag)
 }
 
 # =========================
@@ -22,12 +22,12 @@ render {
 # =========================
 monitorv2 {
   output = desc:{{$laptop.Description}}
-  mode = 2560x1600@240.00000
+  mode = 2560x1600@240.00Hz
   position = 0x0
-  scale = 1.6
+  scale = 1.33
 
   bitdepth = 10
-  cm = dcip3
+  cm = hdr
 
   # SDR content when in HDR
   sdrbrightness = 1.2
@@ -52,7 +52,7 @@ workspace = 7,monitor:{{$laptop.Name}}
 workspace = 8,monitor:{{$laptop.Name}}
 workspace = 9,monitor:{{$laptop.Name}}
 
-exec = hyprctl dispatch moveworkspacetomonitor 1 {{$laptop.Name}}
+exec = hyprcjtl dispatch moveworkspacetomonitor 1 {{$laptop.Name}}
 exec = hyprctl dispatch moveworkspacetomonitor 2 {{$laptop.Name}}
 exec = hyprctl dispatch moveworkspacetomonitor 3 {{$laptop.Name}}
 exec = hyprctl dispatch moveworkspacetomonitor 4 {{$laptop.Name}}
