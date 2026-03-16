@@ -51,6 +51,12 @@
 
   modules.graphics.nvidia.enable = true;
   modules.graphics.intel.enable = true;
+
+  programs.localsend = {
+    enable = true;
+    openFirewall = true;
+  };
+
   # ---------------- BOOT LOADER ----------------
   boot.loader.limine = {
     enable = true;
