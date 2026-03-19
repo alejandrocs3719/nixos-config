@@ -1,0 +1,60 @@
+{{- $primary := index .MonitorsByTag "primary" -}}
+{{- $secondary := index .MonitorsByTag "secondary" -}}
+{{- $kvm := index .MonitorsByTag "kvm" -}}
+
+{{- if $kvm }}
+# kvm - KVM display
+
+# =========================
+#  Monitor (monitorv2)
+# =========================
+monitorv2 {
+  output = desc:{{$kvm.Description}}
+  mode = 2560x1400@60
+  position = 0x0
+  scale = 1.5
+
+  cm = srgb
+  # VRR per-monitor 
+  vrr = 0
+}
+
+# kvm - Assigned workspaces:
+workspace = 1,monitor:{{$kvm.Name}},default:true
+workspace = 2,monitor:{{$kvm.Name}}
+workspace = 3,monitor:{{$kvm.Name}}
+workspace = 4,monitor:{{$kvm.Name}}
+workspace = 5,monitor:{{$kvm.Name}}
+workspace = 6,monitor:{{$kvm.Name}}
+workspace = 7,monitor:{{$kvm.Name}}
+workspace = 8,monitor:{{$kvm.Name}}
+workspace = 9,monitor:{{$kvm.Name}}
+workspace = 10,monitor:{{$kvm.Name}}
+
+exec = hyprctl dispatch moveworkspacetomonitor 1 {{$kvm.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 2 {{$kvm.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 3 {{$kvm.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 4 {{$kvm.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 5 {{$kvm.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 6 {{$kvm.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 7 {{$kvm.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 8 {{$kvm.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 9 {{$kvm.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 10 {{$kvm.Name}}
+
+{{- end }}
+
+{{- if $primary }}
+monitorv2 {
+  output = desc:{{$primary.Description}}
+  disabled = true
+}
+{{- end }}
+
+{{- if $secondary }}
+monitorv2 {
+  output = desc:{{$secondary.Description}}
+  disabled = true
+}
+{{- end }}
+

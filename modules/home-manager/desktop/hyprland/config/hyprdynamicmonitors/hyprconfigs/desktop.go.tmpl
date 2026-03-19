@@ -7,9 +7,6 @@
 
 
 render {
-  cm_enabled = true
-  send_content_type = true
-
   cm_fs_passthrough = 1 # HDR passthrough
   cm_auto_hdr = 1       # in fullscreen, change to cm,hdr
 
@@ -26,13 +23,13 @@ monitorv2 {
   scale = 1.5
 
   bitdepth = 10
-  cm = dcip3
+  cm = hdr
 
   # SDR content when in HDR
-  sdrbrightness = 1.3
+  sdrbrightness = 1.2
   sdrsaturation = 0.98
 
-  # VRR per-monitor (si prefieres por monitor en vez de global misc:vrr)
+  # VRR per-monitor 
   vrr = 2
 }
 

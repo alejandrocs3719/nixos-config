@@ -68,3 +68,23 @@ config_file_type = "template"
 description = "Samsung Display Corp. ATNA60DL01-0"
 monitor_tag = "laptop"
 pre_apply_exec = "notify-send 'Dynamic Monitor Switching' 'Activating laptop screen only profile'"
+
+# KVM screen only
+[profiles.kvm-only]
+config_file = "/home/alejandro/.config/hyprdynamicmonitors/hyprconfigs/kvm-only.go.tmpl"
+config_file_type = "template"
+[profiles.kvm-only.conditions]
+
+[[profiles.kvm-only.conditions.required_monitors]]
+description = "GLI GLKVM 891247"
+monitor_tag = "kvm"
+
+[[profiles.kvm-only.conditions.required_monitors]]
+description = "Microstep MAG321UX OLED"
+monitor_tag = "primary"
+
+[[profiles.kvm-only.conditions.required_monitors]]
+description = "BNQ BenQ RL2455 56E05187SL0"
+monitor_tag = "secondary"
+
+
