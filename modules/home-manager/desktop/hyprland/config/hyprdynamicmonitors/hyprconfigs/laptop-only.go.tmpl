@@ -4,7 +4,7 @@
 {{- if $laptop -}}
 
 {{- if isOnBattery }}
-monitor={{$laptop.Name}},2560x1600@60.00000,0x0,1.33,vrr,1
+monitor={{$laptop.Name}},2560x1600@60.00000,0x0,1.33,vrr,1,cm,srgb
 {{- else }}
 
 # AC mode: Full performance
@@ -27,14 +27,14 @@ monitorv2 {
   scale = 1.33
 
   bitdepth = 10
-  cm = hdr
+  cm = hdredid
 
   # SDR content when in HDR
   sdrbrightness = 1.2
   sdrsaturation = 0.98
 
   # VRR per-monitor
-  vrr = 2
+  vrr = 1
 
   # Force HDR 
   supports_hdr = 1

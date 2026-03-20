@@ -8,7 +8,7 @@
     ./desktop/niri
     ./desktop/hyprland
     ./desktop/gtk.nix
-    #./desktop/stlix.nix
+    ./desktop/dunst
     ./media/mpd.nix
     ./zathura.nix
     ./nemo.nix

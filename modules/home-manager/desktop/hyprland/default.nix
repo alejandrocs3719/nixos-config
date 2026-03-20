@@ -49,6 +49,8 @@ in
     modules.desktop.gui.waybar.enable = true;
     # Launcher
     modules.desktop.gui.rofi.enable = true;
+    # Notifications
+    modules.desktop.gui.dunst.enable = true;
 
     
     # Idle daemon
