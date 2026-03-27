@@ -310,19 +310,11 @@
         ]
       },
       "locked": {
-<<<<<<< HEAD
         "lastModified": 1774007980,
         "narHash": "sha256-FOnZjElEI8pqqCvB6K/1JRHTE8o4rer8driivTpq2uo=",
         "owner": "nix-community",
         "repo": "home-manager",
         "rev": "9670de2921812bc4e0452f6e3efd8c859696c183",
-=======
-        "lastModified": 1774550169,
-        "narHash": "sha256-cLcm8jXyhEDRHTCN1fym6+5L6Z264kj2QBpL+/yT3WI=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "7622882af88598b882436416bd74154826fcf742",
->>>>>>> 614273c (sunshine changes, fixed wallpaper persistence in reboots)
         "type": "github"
       },
       "original": {
@@ -480,19 +472,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-<<<<<<< HEAD
         "lastModified": 1774013813,
         "narHash": "sha256-gaKNu+dW6lA4LU8PM4pNqmaqoY8hIggM7ticP6VjVFk=",
         "owner": "fufexan",
         "repo": "nix-gaming",
         "rev": "342bd5c65526d57b7bed200c8219d1a48414c806",
-=======
-        "lastModified": 1774493390,
-        "narHash": "sha256-aBSOcFXiEbDYJDDkzwLEBvnegqeb+sieLm6HwfNOnWw=",
-        "owner": "fufexan",
-        "repo": "nix-gaming",
-        "rev": "745921bfb8d18daf16134433e70ce2460d9d7589",
->>>>>>> 614273c (sunshine changes, fixed wallpaper persistence in reboots)
         "type": "github"
       },
       "original": {
@@ -618,19 +602,11 @@
         "noctalia-qs": "noctalia-qs"
       },
       "locked": {
-<<<<<<< HEAD
         "lastModified": 1774014047,
         "narHash": "sha256-pSbjavFqmHzbR4aG+22k81yGgjIUrV64UePEf4m/s5U=",
         "owner": "noctalia-dev",
         "repo": "noctalia-shell",
         "rev": "e2ba46ed122082a15841be9e2b9fb392395c5a4f",
-=======
-        "lastModified": 1774536980,
-        "narHash": "sha256-j7I4XVEaUsiR0EOUJGnY7DZ0V/GYtcGJ97K3abzU9QY=",
-        "owner": "noctalia-dev",
-        "repo": "noctalia-shell",
-        "rev": "396fba755b515913f4ac7596c30b827b0f67d53a",
->>>>>>> 614273c (sunshine changes, fixed wallpaper persistence in reboots)
         "type": "github"
       },
       "original": {
