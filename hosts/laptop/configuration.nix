@@ -17,24 +17,16 @@
     ./modules
   ];
 
-  nixpkgs.overlays = [
-    (import ../../overlays/autopsy.nix)
-    inputs.nix-cachyos-kernel.overlays.pinned
-  ];
-
-# systemd.services.reset-gpu-after-resume = {
-#   description = "Reset Intel GPU after suspend";
-#   wantedBy = [ "post-resume.target" ];
-#   serviceConfig = {
-#     Type = "oneshot";
-#     ExecStart = "/run/current-system/sw/bin/sh -c 'echo 1 > /sys/class/drm/card0/device/reset'";
-#   };
-# };
+  nixpkgs = {
+    overlays = [
+      inputs.nix-cachyos-kernel.overlays.pinned
+    ];
+  };
 
   modules.desktop.hyprland.enable = true;
-  #modules.desktop.kde.enable = true;
+  #  modules.desktop.kde.enable = true;
   modules.gaming.enable = true;
-  # modules.networking.sunshine.enable = true;
+  modules.networking.sunshine.enable = true;
   modules.media.enable = true;
 
   modules.services.ddcutil.enable = true;
@@ -51,6 +43,7 @@
 
   modules.graphics.nvidia.enable = true;
   modules.graphics.intel.enable = true;
+
 
   programs.localsend = {
     enable = true;
